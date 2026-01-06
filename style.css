@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'Grifter';
-    src: url('assets/Grifter-Bold.otf') format('opentype');
-    /* Placeholder for user to add file */
+    src: url('assets/GRIFTERBold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
 }
