@@ -877,3 +877,245 @@ body {
     color: var(--text-secondary);
     margin-top: 10px;
 }
+
+/* Price List Glassmorphism Styles */
+.center-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header-desc {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.glass-card {
+    background: rgba(20, 20, 20, 0.6);
+    /* Slightly darker than reference to fit overall theme */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    font-family: var(--font-mono);
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+
+
+.card-header-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.blue-icon {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+}
+
+.purple-icon {
+    background: rgba(168, 85, 247, 0.1);
+    color: #c084fc;
+}
+
+.emerald-icon {
+    background: rgba(16, 185, 129, 0.1);
+    color: #34d399;
+}
+
+.amber-icon {
+    background: rgba(245, 158, 11, 0.1);
+    color: #fbbf24;
+}
+
+.glass-card h2 {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+.price-items-list {
+    list-style: none;
+    padding: 0;
+}
+
+.price-items-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-items-list li:last-child {
+    border-bottom: none;
+}
+
+.price-items-list li.col-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.label {
+    color: #cbd5e1;
+    /* Slate-300 equivalent */
+    font-size: 0.95rem;
+}
+
+.price {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.sub-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    /* Slate-500 */
+    margin-top: 5px;
+}
+
+.card-note {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.alert-box {
+    margin-top: 20px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.alert-box p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.translation-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.trans-text {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.trans-text.sub {
+    font-style: italic;
+    border-left: 2px solid #475569;
+    padding-left: 10px;
+    color: #94a3b8;
+}
+
+.consult-tag {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.consult-tag span {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.contact-footer {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+    margin-top: 40px;
+}
+
+.contact-footer h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.contact-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    color: #94a3b8;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.footer-link ion-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.footer-link:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-links-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* About Mobile Layout */
+    .profile-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -33,7 +33,7 @@
             <span></span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">ABOUT</a></li>
+            <li><a href="about.html">ABOUT</a></li>
             <li><a href="news.html">NEWS</a></li>
             <li><a href="works.html">WORKS</a></li>
             <li><a href="contact.html" class="active">CONTACT</a></li>
@@ -55,125 +55,139 @@
     </nav>
 
     <main class="page-container">
-        <header class="page-header">
-            <h1>CONTACT</h1>
-            <p class="header-subtitle">LET'S CREATE SOMETHING TOGETHER</p>
+        <header class="page-header center-header">
+            <h1>PRICE LIST</h1>
+            <p class="header-desc">
+                制作や出演、その他業務の価格表です。<br>
+                一例ですので、規模や内容に合わせて柔軟にご相談に応じます。
+            </p>
         </header>
 
         <section class="page-content">
+            <div class="price-grid">
 
-            <!-- Contact Methods Hero -->
-            <div class="contact-hero">
-                <div class="contact-card primary">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <h3>EMAIL</h3>
-                    <a href="mailto:ariayuuto@gmail.com" class="contact-link">ariayuuto@gmail.com</a>
-                    <p class="sub-text">制作・出演のご相談はこちら</p>
+                <!-- Music Production -->
+                <div class="glass-card music-card">
+                    <div class="card-header-flex">
+                        <div class="icon-box blue-icon">
+                            <ion-icon name="musical-notes-outline"></ion-icon>
+                        </div>
+                        <h2>楽曲制作</h2>
+                    </div>
+                    <ul class="price-items-list">
+                        <li>
+                            <span class="label">同人新規制作</span>
+                            <span class="price">¥15,000</span>
+                        </li>
+                        <li>
+                            <span class="label">同人リミックス</span>
+                            <span class="price">¥10,000</span>
+                        </li>
+                        <li>
+                            <span class="label">商業新規制作</span>
+                            <span class="price">¥50,000〜</span>
+                        </li>
+                        <li>
+                            <span class="label">商業リミックス</span>
+                            <span class="price">¥40,000〜</span>
+                        </li>
+                    </ul>
+                    <p class="card-note">※規模や関係性により変動あり。</p>
                 </div>
-                <div class="contact-socials-row">
-                    <a href="https://x.com/DJ_Norts" target="_blank" class="contact-card social-card">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </span>
-                        <span class="social-handle">@DJ_Norts</span>
-                    </a>
-                    <a href="https://www.instagram.com/streak_ap/" target="_blank" class="contact-card social-card">
-                        <span class="icon"><ion-icon name="logo-instagram"></ion-icon></span>
-                        <span class="social-handle">@streak_ap</span>
-                    </a>
+
+                <!-- Video Production -->
+                <div class="glass-card video-card">
+                    <div class="card-header-flex">
+                        <div class="icon-box purple-icon">
+                            <ion-icon name="videocam-outline"></ion-icon>
+                        </div>
+                        <h2>映像制作</h2>
+                    </div>
+                    <ul class="price-items-list">
+                        <li class="col-item">
+                            <div class="flex-between">
+                                <span class="label">同人 (MG)</span>
+                                <span class="price">¥50,000〜</span>
+                            </div>
+                            <span class="sub-label">モーショングラフィックス</span>
+                        </li>
+                        <li>
+                            <span class="label">同人 (CG)</span>
+                            <span class="price">¥80,000〜</span>
+                        </li>
+                    </ul>
+                    <div class="alert-box">
+                        <p>※現在、商業映像は受け付けておりません。</p>
+                    </div>
+                </div>
+
+                <!-- Event / DJ -->
+                <div class="glass-card event-card">
+                    <div class="card-header-flex">
+                        <div class="icon-box emerald-icon">
+                            <ion-icon name="mic-outline"></ion-icon>
+                        </div>
+                        <h2>イベント出演</h2>
+                    </div>
+                    <ul class="price-items-list">
+                        <li class="col-item">
+                            <div class="flex-between">
+                                <span class="label">DJ (~4h)</span>
+                                <span class="price">¥3,000 <small>+交通費</small></span>
+                            </div>
+                        </li>
+                        <li class="col-item">
+                            <div class="flex-between">
+                                <span class="label">DJ (4h~)</span>
+                                <span class="price">¥5,000 <small>+交通費</small></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="card-note">※吉祥寺駅起算。規模により変動あり。</p>
+                </div>
+
+                <!-- Translation -->
+                <div class="glass-card translation-card">
+                    <div class="card-header-flex">
+                        <div class="icon-box amber-icon">
+                            <ion-icon name="language-outline"></ion-icon>
+                        </div>
+                        <h2>翻訳 / Localize</h2>
+                    </div>
+                    <div class="translation-body">
+                        <p class="trans-text">
+                            歌詞日本語ローカライズ<br>
+                            (韓国語 → 日本語)
+                        </p>
+                        <p class="trans-text sub">
+                            가사 일본어 현지화<br>
+                            (한국어 → 일본어)
+                        </p>
+                        <div class="consult-tag">
+                            <span>要相談 / 상담 필요</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="pricing-section">
-                <h2 class="section-heading">PRICE LIST</h2>
-                <p class="section-desc">制作・出演・その他業務の参考価格表です。<br>プロジェクトの規模や内容により変動しますので、まずはお気軽にご相談ください。</p>
-
-                <div class="services-grid">
-                    <!-- Music -->
-                    <div class="service-card">
-                        <div class="card-header">
-                            <ion-icon name="musical-notes-outline"></ion-icon>
-                            <h3>MUSIC</h3>
-                            <span class="jp-label">楽曲制作</span>
-                        </div>
-                        <ul class="price-list">
-                            <li>
-                                <span class="item-name">同人新規制作</span>
-                                <span class="item-price">¥15,000</span>
-                            </li>
-                            <li>
-                                <span class="item-name">同人リミックス</span>
-                                <span class="item-price">¥10,000</span>
-                            </li>
-                            <li class="commercial">
-                                <span class="item-name">商業新規制作</span>
-                                <span class="item-price">¥50,000~</span>
-                            </li>
-                            <li class="commercial">
-                                <span class="item-name">商業リミックス</span>
-                                <span class="item-price">¥40,000~</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Video -->
-                    <div class="service-card">
-                        <div class="card-header">
-                            <ion-icon name="videocam-outline"></ion-icon>
-                            <h3>VIDEO</h3>
-                            <span class="jp-label">映像制作</span>
-                        </div>
-                        <ul class="price-list">
-                            <li>
-                                <span class="item-name">同人新規 (Motion)</span>
-                                <span class="item-price">¥50,000~</span>
-                            </li>
-                            <li>
-                                <span class="item-name">同人新規 (CG)</span>
-                                <span class="item-price">¥80,000~</span>
-                            </li>
-                        </ul>
-                        <p class="card-note">※商業案件は現在受付停止中</p>
-                    </div>
-
-                    <!-- Event -->
-                    <div class="service-card">
-                        <div class="card-header">
-                            <ion-icon name="mic-outline"></ion-icon>
-                            <h3>EVENT</h3>
-                            <span class="jp-label">イベント出演</span>
-                        </div>
-                        <ul class="price-list">
-                            <li>
-                                <span class="item-name">DJ (~4h)</span>
-                                <span class="item-price">¥3,000 <small>+交通費</small></span>
-                            </li>
-                            <li>
-                                <span class="item-name">DJ (4h~)</span>
-                                <span class="item-price">¥5,000 <small>+交通費</small></span>
-                            </li>
-                        </ul>
-                        <p class="card-note">※拠点は吉祥寺駅です</p>
-                    </div>
-
-                    <!-- Translation -->
-                    <div class="service-card">
-                        <div class="card-header">
-                            <ion-icon name="language-outline"></ion-icon>
-                            <h3>TRANSLATION</h3>
-                            <span class="jp-label">翻訳</span>
-                        </div>
-                        <div class="translation-content">
-                            <p>歌詞日本語ローカライズ<br>(韓国語 → 日本語)</p>
-                            <p class="sub">가사 일본어 현지화 (한국어→일본어)</p>
-                            <div class="consult-box">ASK / 要相談</div>
-                        </div>
-                    </div>
+            <!-- Contact Footer -->
+            <div class="contact-footer">
+                <h3>Contact Info</h3>
+                <div class="contact-links-row">
+                    <a href="mailto:ariayuuto@gmail.com" class="footer-link">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        ariayuuto@gmail.com
+                    </a>
+                    <a href="https://x.com/DJ_Norts" target="_blank" class="footer-link">
+                        <ion-icon name="logo-twitter"></ion-icon> <!-- Using Ionicons for simplicity as standard -->
+                        @DJ_Norts
+                    </a>
+                    <a href="https://instagram.com/streak_ap" target="_blank" class="footer-link">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                        @streak_ap
+                    </a>
                 </div>
+            </div>
         </section>
     </main>
 
