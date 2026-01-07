@@ -134,4 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // Loading Animation
+    const loader = document.getElementById('loader');
+    if (loader) {
+        // Check if user has visited in this session
+        if (!sessionStorage.getItem('visited')) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    // Optional: remove from DOM after transition
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                    // Set visited flag
+                    sessionStorage.setItem('visited', 'true');
+                }, 1000); // 1.0 second delay before fading out
+            });
+        } else {
+            // If already visited, hide immediately
+            loader.style.display = 'none';
+        }
+    }
 });
