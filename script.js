@@ -83,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cat = card.getAttribute('data-cat');
                 const desc = card.getAttribute('data-desc');
 
+                // Get the background color of the placeholder for the modal
+                const cardPlaceholder = card.querySelector('.card-placeholder');
+                const modalPlaceholder = modal.querySelector('.modal-placeholder');
+                if (cardPlaceholder && modalPlaceholder) {
+                    modalPlaceholder.style.background = cardPlaceholder.style.background;
+                }
+
                 modalTitle.textContent = title;
                 modalCat.textContent = cat;
                 modalDesc.textContent = desc;
