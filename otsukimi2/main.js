@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     tkg: {
       name: "TKG",
-      bio: "TKG는 정통 미니멀 테크노와 다크 테크 하우스를 기반으로 활동하며 청중의 청각을 최면 상태로 빠뜨리는 정밀한 루프 아티스트입니다. 반복적인 킥 드럼 패턴 속에 미세하게 변화하는 신스 텍스처를 배치하여 댄스플로어에 발을 디딘 모든 이들이 이성을 잊고 사운드 자체에 몰입하게 만듭니다."
+      bio: "TKG는 정통 미니멀 테크노와 다크 테크 하우스를 기반으로 활동하며 청중의 청각을 최면 상태로 빠뜨리는 정밀한 루프 아티سٹ입니다. 반복적인 킥 드럼 패턴 속에 미세하게 변화하는 신스 텍스처를 배치하여 댄스플로어에 발을 디딘 모든 이들이 이성을 잊고 사운드 자체에 몰입하게 만듭니다."
     },
     calyne: {
       name: "CALYNE",
@@ -233,26 +233,39 @@ document.addEventListener('DOMContentLoaded', () => {
         total: total.toLocaleString() + ' KRW'
       };
 
-      // 発行されたGoogle Apps Scriptの「ウェブアプリURL」を反映
+      // 【修正】新しくデプロイに成功した最新のGAS「ウェブアプリURL」に差し替え
       const gasWebappUrl = "https://script.google.com/macros/s/AKfycbwKnQdQz8goP2I4682LAZuMRcf8okwn1onSfbN2Xqh3-6SkbSEC9eKGoqyjftgXGATqgQ/exec";
 
+      // 【修正】CORS制限およびGAS特有のリダイレクトエラーを完全に防ぐfetch設定
       fetch(gasWebappUrl, {
         method: "POST",
         mode: "cors",
+        redirect: "follow", // リダイレクトに自動追従させる
         headers: {
-          "Content-Type": "text/plain"
+          "Content-Type": "text/plain;charset=utf-8" // OPTIONSリクエスト(CORS)を回避するための設定
         },
         body: JSON.stringify(bookingData)
       })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
         .then(data => {
-          document.getElementById('receipt-no').innerText = randomNo;
-          document.getElementById('receipt-name').innerText = name;
-          document.getElementById('receipt-qty').innerText = `${qty}매`;
-          document.getElementById('receipt-total').innerText = total.toLocaleString() + ' KRW';
+          if (data.result === "success") {
+            // レシート表示に必要なDOMマッピング
+            document.getElementById('receipt-no').innerText = randomNo;
+            document.getElementById('receipt-name').innerText = name;
+            document.getElementById('receipt-qty').innerText = `${qty}매`;
+            document.getElementById('receipt-total').innerText = total.toLocaleString() + ' KRW';
 
-          stageForm.classList.add('display-none');
-          stageSuccess.classList.remove('display-none');
+            stageForm.classList.add('display-none');
+            stageSuccess.classList.remove('display-none');
+          } else {
+            console.error("GAS execution error:", data.error);
+            alert("예매 처리 중 서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+          }
         })
         .catch(error => {
           console.error("Error saving to sheet:", error);
