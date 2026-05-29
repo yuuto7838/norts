@@ -186,7 +186,7 @@
       </div>
 
       <div class="lineup-grid" id="dj-cards-grid">
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-ikumante')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="ikumante">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_ikumante.png" alt="ikumante" class="dj-portrait">
@@ -199,7 +199,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-murasaki')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="murasaki">
           <div class="dj-flag-badge">🇰🇷</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_murasaki.png" alt="MURASAKI" class="dj-portrait">
@@ -212,7 +212,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-norts')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="norts">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_norts.png" alt="Norts" class="dj-portrait">
@@ -225,7 +225,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-yutan')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="yutan">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_yutan.png" alt="ゆーたん" class="dj-portrait">
@@ -238,7 +238,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-tkg')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="tkg">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_tkg.png" alt="TKG" class="dj-portrait">
@@ -251,7 +251,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-calyne')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="calyne">
           <div class="dj-flag-badge">🇰🇷</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_calyne.png" alt="CALYNE" class="dj-portrait">
@@ -264,7 +264,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-subun')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="subun">
           <div class="dj-flag-badge">🇰🇷</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_subun.png" alt="SUBUN" class="dj-portrait">
@@ -277,7 +277,7 @@
           </div>
         </div>
 
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-kakigenkin')">
+        <div class="dj-card glass-panel cursor-hover" data-dj="kakigenkin">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
             <img src="assets/dj_kakigenkin.png" alt="火気厳禁 / kakigenkin" class="dj-portrait">
@@ -340,249 +340,32 @@
     </div>
   </footer>
 
-  <div class="modal-overlay" id="modal-ikumante" onclick="closeModalOnBg(event, 'modal-ikumante')">
+  <div class="modal-overlay" id="dj-modal">
     <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-ikumante')" aria-label="닫기"><i
+      <button class="close-modal-btn" id="close-dj-modal" aria-label="닫기"><i
           class="fa-solid fa-xmark"></i></button>
       <div class="modal-grid">
         <div class="modal-image-side">
-          <img src="assets/dj_ikumante.png" alt="ikumante" class="modal-dj-portrait">
+          <img src="" alt="" class="modal-dj-portrait" id="modal-dj-img">
           <div class="modal-dj-glow"></div>
         </div>
         <div class="modal-info-side">
           <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">ikumante</h2>
+            <h2 class="modal-dj-name" id="modal-dj-name">DJ NAME</h2>
           </div>
           <div class="modal-divider"></div>
           <div class="modal-bio">
             <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>이 사람을 찾고 있습니다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/mante_1118" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a href="https://www.youtube.com/@ikumante_" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn yt-btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            <p id="modal-dj-full-bio">Biography text goes here...</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal-overlay" id="modal-murasaki" onclick="closeModalOnBg(event, 'modal-murasaki')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-murasaki')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_murasaki.png" alt="MURASAKI" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">MURASAKI</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>오오츠카 아이와 퍼퓸과 하츠네 미쿠를 듣다 보니 디제이가 되었습니다. 잘 부탁드립니다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/murasaki_jsn/" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-norts" onclick="closeModalOnBg(event, 'modal-norts')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-norts')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_norts.png" alt="Norts" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">Norts</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>일본을 기반으로 활동하는 음악·광고 프로듀서. 크리에이터로서 곡 및 영상 제작을 직접 다룰 뿐만 아니라, 음악 레이블 ‘Oshiribeat’의 운영과 전체적인 제작 디렉션을 이끌고 있다.
-
-              또한 DJ로도 활동 중이며, K-POP을 빠른 BPM으로 리믹스한 독창적인 ‘K-CORE’ 스타일을 확립했다. 한국 현지에서의 이벤트 주최 및 게스트 참여 등 글로벌 씬에서도 다수의 실적을
-              보유하고 있다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/streak_ap/" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a href="https://x.com/DJ_Norts" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn tw-btn"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-yutan" onclick="closeModalOnBg(event, 'modal-yutan')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-yutan')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_yutan.png" alt="ゆーたん" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">ゆーたん</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>DJ / TrackMaker / Singer
-              현재는 아키하바라 MOGRA에서 정기 개최 중인 'DressingRoom'의 레ギュラー DJ로 활약하고 있다. 애니송이나 Vtuber, 성우 악곡부터 K-POP까지 장르를 넘나드는 올라운드
-              플레이 스타일로 지지를 얻고 있으며, DJ로서 일본 전역의 이벤트에 출연 중이다.
-
-              싱어(Singer)로 활동하던 시절에 들은 비(Rain)를 계기로 K-POP에 깊게 심취하게 되었고, 그 지식을 살려 K-POP DJ로도 활동을 시작했다.
-
-              2026년에는 마찬가지로 MOGRA에서 개최되는 K-POP 이벤트 'LiarLiar'에도 출연하며 K-POP DJ로서 활동 영역을 한층 더 넓혀가고 있다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/yuuki_tan8701" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-tkg" onclick="closeModalOnBg(event, 'modal-tkg')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-tkg')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_tkg.png" alt="TKG" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">TKG</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>도쿄 조후에 위치한 라이브 하우스 / 클럽 '조후 Cross(調布Cross)'의 점장이자 밴드 'RUNRUNRUNS'의 베이시스트.
-
-              K-POP을 중심으로 DISCO / HOUSE 등 댄스 뮤직을 메인으로 내세워 DJ 활동을 펼치고 있다.
-
-              2022년부터 조후 Cross에서 시작한 K-POP DJ Party 'Feel So Good'을 이쿠만테(ikumante)와 공동 주최하고 있으며, 올해로 5년째를 맞이한다.
-
-              술을 마시는 방식과 음악을 즐기는 방식은 파멸적입니다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/tkg_suke/" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a href="https://soundcloud.com/h5bjsvpkj5eu" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn sc-btn"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-calyne" onclick="closeModalOnBg(event, 'modal-calyne')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-calyne')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_calyne.png" alt="CALYNE" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">CALYNE</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>감성적이고 몽환적인 프로그레시브 하우스로 새벽녘의 감성을 노래하는 프로듀서</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://on.soundcloud.com/OwZX3FuNezvmTzCUP" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn sc-btn"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-subun" onclick="closeModalOnBg(event, 'modal-subun')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-subun')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_subun.png" alt="SUBUN" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">SUBUN</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>그루비한 디스코와 펑키 하우스로 플로어 전체를 복고풍 댄스 파티로 만드는 디제이</p>
-          </div>
-          <div class="modal-social-links">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-kakigenkin" onclick="closeModalOnBg(event, 'modal-kakigenkin')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-kakigenkin')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_kakigenkin.png" alt="火気厳禁 / kakigenkin" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">火気厳禁 / kakigenkin</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>2018년 말부터 K-POP에 빠져, 한국 음악(K-POP, K-R&B, K-HIPHOP...)에 대해 이야기하는 블로그 &lt;한글밭에서 붙잡혀서&gt;를 운영하고 있다.
-
-              2023년에는 잡지 『유리이카』에 비평 'K-POP 걸그룹의 래퍼 계보——연쇄하고 전파되는 시스터후드'를 기고했다. 이후 한국 아티스트 인터뷰, 아티스트 소개 칼럼, 라이브 리포트 작성은
-              물론, 한국 아티스트의 신곡 발표에 맞춘 보도자료(프레스 릴리스) 제작 및 배포 등을 진행하고 있다.
-
-              2025년부터는 DJ로서도 활동을 시작하여 도쿄 시내 곳곳의 클럽과 DJ 바에서 열리는 K-POP 및 한국 음악 계열 이벤트에 출연 중이다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/kakigenkin" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="booking-modal" onclick="closeModalOnBg(event, 'booking-modal')">
+  <div class="modal-overlay" id="booking-modal">
     <div class="booking-modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="hideBookingModal()" aria-label="닫기"><i
+      <button class="close-modal-btn" id="close-booking-modal" aria-label="닫기"><i
           class="fa-solid fa-xmark"></i></button>
 
       <div id="booking-stage-form">
@@ -602,7 +385,7 @@
           </div>
         </div>
 
-        <form id="ticket-booking-form" onsubmit="return handleBookingSubmit(event);">
+        <form id="ticket-booking-form">
           <div class="form-group">
             <label for="buyer-name">예매자명 *</label>
             <input type="text" id="buyer-name" required placeholder="본인 인증을 위한 성명을 입력하세요.">
@@ -655,137 +438,12 @@
         </div>
 
         <p class="success-footer">※ 입력하신 휴대폰 번호로 모바일 티켓 링크가 전송되었습니다.<br>입장 시 모바일 티켓 화면과 실물 신분증을 제시해 주시기 바랍니다.</p>
-        <button class="cta-button" onclick="hideBookingModal()">홈으로 돌아가기</button>
+        <button class="cta-button" id="close-success-btn">홈으로 돌아가기</button>
       </div>
     </div>
   </div>
 
-  <script>
-    // --- 모달 표시 로직 ---
-    function openTargetModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    function closeTargetModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-    function closeModalOnBg(event, modalId) {
-      if (event.target.id === modalId) {
-        closeTargetModal(modalId);
-      }
-    }
-
-    // --- 티켓 예약 모달 ---
-    const bookingModal = document.getElementById('booking-modal');
-    function showBookingModal() {
-      document.getElementById('ticket-booking-form').reset();
-      document.getElementById('booking-stage-form').classList.remove('display-none');
-      document.getElementById('booking-stage-success').classList.add('display-none');
-      bookingModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function hideBookingModal() {
-      bookingModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    // 이벤트 바인딩
-    document.getElementById('nav-booking-btn').addEventListener('click', showBookingModal);
-    document.getElementById('cta-book-tickets').addEventListener('click', showBookingModal);
-
-    // 폼 송신
-    function handleBookingSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('buyer-name').value;
-      const phone = document.getElementById('buyer-phone').value;
-      const qty = document.getElementById('ticket-quantity').value;
-      const totalPrice = (parseInt(qty) * 15000).toLocaleString() + " KRW";
-
-      const submitBtn = document.getElementById('confirm-booking-btn');
-      submitBtn.innerText = '예매 처리 중...';
-      submitBtn.disabled = true;
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzM6Xh2_bW0-w9Z9lT46mK_NfQ0Sbyz-VepW63Gv2P-D-UoZ0gN_eUuHOnLAtQ5_ZpQ/exec';
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('phone', phone);
-      formData.append('quantity', qty);
-
-      fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => response.json())
-        .then(result => {
-          document.getElementById('receipt-no').innerText = result.bookingId || 'OT-' + Math.floor(Math.random() * 90000000 + 10000000);
-          document.getElementById('receipt-name').innerText = name;
-          document.getElementById('receipt-qty').innerText = qty + '매';
-          document.getElementById('receipt-total').innerText = totalPrice;
-
-          document.getElementById('booking-stage-form').classList.add('display-none');
-          document.getElementById('booking-stage-success').classList.remove('display-none');
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          alert("예매 처리 중 통신 오류가 발생했습니다. 다시 시도해 주세요.");
-        })
-        .finally(() => {
-          submitBtn.innerText = '예매 신청 완료하기';
-          submitBtn.disabled = false;
-        });
-    }
-
-    // --- UI 연출 관련 ---
-    document.addEventListener('DOMContentLoaded', () => {
-      window.addEventListener('scroll', () => {
-        const header = document.getElementById('main-header');
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-      });
-
-      const hero = document.getElementById('hero');
-      const frame = document.getElementById('hero-interactive-frame');
-      const moon = document.getElementById('moon-image');
-      const logo = document.getElementById('otsukimi-logo-image');
-      if (hero && frame && moon && logo) {
-        hero.addEventListener('mousemove', (e) => {
-          const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-          const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-          frame.style.transform = `rotateX(${y * -15}deg) rotateY(${x * 15}deg)`;
-          moon.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-          logo.style.transform = `translate(${x * -6}px, ${y * -6}px)`;
-        });
-        hero.addEventListener('mouseleave', () => {
-          frame.style.transform = 'rotateX(0deg) rotateY(0deg)';
-          moon.style.transform = 'translate(0px, 0px)';
-          logo.style.transform = 'translate(0px, 0px)';
-        });
-      }
-
-      const targetDate = new Date('2026-07-18T18:00:00+09:00').getTime();
-      function updateCountdown() {
-        const distance = targetDate - new Date().getTime();
-        if (distance < 0) {
-          document.getElementById('countdown-timer').innerHTML = "<div class='time-ended'>EVENT HAS STARTED!</div>";
-          return;
-        }
-        document.getElementById('days').innerText = String(Math.floor(distance / 86400000)).padStart(2, '0');
-        document.getElementById('hours').innerText = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
-      }
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      document.getElementById('scroll-arrow').addEventListener('click', () => {
-        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 
 </html>
