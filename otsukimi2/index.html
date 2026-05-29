@@ -160,6 +160,7 @@
                   <span class="item-value font-highlight">Shinchon 1nfinity Club (신촌 인피니티)</span>
                 </div>
               </div>
+              <!-- 티켓 가격 명시성 강화 수정 부분 -->
               <div class="info-item" id="info-price">
                 <div class="info-icon"><i class="fa-solid fa-ticket"></i></div>
                 <div class="info-content">
@@ -235,13 +236,13 @@
         <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-yutan')">
           <div class="dj-flag-badge">🇯🇵</div>
           <div class="dj-image-wrapper">
-            <img src="assets/dj_yutan.png" alt="ゆーたん" class="dj-portrait">
+            <img src="assets/dj_yutan.png" alt="유ー탄" class="dj-portrait">
             <div class="dj-overlay">
               <span class="view-profile-btn">VIEW PROFILE</span>
             </div>
           </div>
           <div class="dj-info">
-            <h3 class="dj-name">ゆーたん</h3>
+            <h3 class="dj-name">유ー탄</h3>
           </div>
         </div>
 
@@ -281,19 +282,6 @@
           </div>
           <div class="dj-info">
             <h3 class="dj-name">SUBUN</h3>
-          </div>
-        </div>
-
-        <div class="dj-card glass-panel cursor-hover" onclick="openTargetModal('modal-kakigenkin')">
-          <div class="dj-flag-badge">🇯🇵</div>
-          <div class="dj-image-wrapper">
-            <img src="assets/dj_kakigenkin.png" alt="火気厳禁 / kakigenkin" class="dj-portrait">
-            <div class="dj-overlay">
-              <span class="view-profile-btn">VIEW PROFILE</span>
-            </div>
-          </div>
-          <div class="dj-info">
-            <h3 class="dj-name">火気厳禁 / kakigenkin</h3>
           </div>
         </div>
       </div>
@@ -439,12 +427,12 @@
           class="fa-solid fa-xmark"></i></button>
       <div class="modal-grid">
         <div class="modal-image-side">
-          <img src="assets/dj_yutan.png" alt="ゆーたん" class="modal-dj-portrait">
+          <img src="assets/dj_yutan.png" alt="유ー탄" class="modal-dj-portrait">
           <div class="modal-dj-glow"></div>
         </div>
         <div class="modal-info-side">
           <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">ゆーたん</h2>
+            <h2 class="modal-dj-name">유ー탄</h2>
           </div>
           <div class="modal-divider"></div>
           <div class="modal-bio">
@@ -546,35 +534,6 @@
             <p></p>
           </div>
           <div class="modal-social-links">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-kakigenkin" onclick="closeModalOnBg(event, 'modal-kakigenkin')">
-    <div class="modal-card glass-panel animate-zoom">
-      <button class="close-modal-btn" onclick="closeTargetModal('modal-kakigenkin')" aria-label="닫기"><i
-          class="fa-solid fa-xmark"></i></button>
-      <div class="modal-grid">
-        <div class="modal-image-side">
-          <img src="assets/dj_kakigenkin.png" alt="火気厳禁 / kakigenkin" class="modal-dj-portrait">
-          <div class="modal-dj-glow"></div>
-        </div>
-        <div class="modal-info-side">
-          <div class="modal-dj-meta">
-            <h2 class="modal-dj-name">火気厳禁 / kakigenkin</h2>
-          </div>
-          <div class="modal-divider"></div>
-          <div class="modal-bio">
-            <h4 class="modal-section-title">아티스트 소개</h4>
-            <p>2018년 연말부터 K-POP에 매료되어, 한국 음악(K-POP, K-R&B, K-HIPHOP 등)을 다루는 블로그 &lt;한글밭에서 붙잡아줘(ハングル畑でつかまえて)&gt;를 운영하고 있다. 2023년에는 일본 잡지 『유레카(ユリイカ)』에 평론 「K-POP 걸그룹의 래퍼 계보 — 연쇄하고 전파되는 시스터후드」를 기고했다. 이후 한국 아티스트 인터뷰, 아티스트 소개 칼럼, 라이브 리포트 작성은 물론, 한국 아티스트의 신곡 발표에 맞춘 보도자료(프레스 릴리스) 제작 및 배포 등의 활동을 이어오고 있다.
-
-              2025년부터는 DJ로서도 활동을 시작하여, 도쿄 도내 각지의 클럽과 DJ 바에서 열리는 K-POP 및 한국 음악 관련 이벤트에 출연 중이다.</p>
-          </div>
-          <div class="modal-social-links">
-            <a href="https://www.instagram.com/kakigenkin" target="_blank" rel="noopener noreferrer"
-              class="modal-social-btn ig-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
           </div>
         </div>
       </div>
@@ -697,11 +656,9 @@
       document.body.style.overflow = '';
     }
 
-    // 이벤트 바인딩
+    // イベントバインディング
     document.getElementById('nav-booking-btn').addEventListener('click', showBookingModal);
     document.getElementById('cta-book-tickets').addEventListener('click', showBookingModal);
-
-    // 【修正】 重複しエラーの原因となっていた handleBookingSubmit(e) 関数を丸ごと削除
 
     // --- UI 연출 관련 ---
     document.addEventListener('DOMContentLoaded', () => {
