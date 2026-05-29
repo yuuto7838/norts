@@ -160,7 +160,6 @@
                   <span class="item-value font-highlight">Shinchon 1nfinity Club (신촌 인피니티)</span>
                 </div>
               </div>
-              <!-- 티켓 가격 명시성 강화 수정 부분 -->
               <div class="info-item" id="info-price">
                 <div class="info-icon"><i class="fa-solid fa-ticket"></i></div>
                 <div class="info-content">
@@ -604,7 +603,7 @@
           </div>
         </div>
 
-        <form id="ticket-booking-form" onsubmit="return handleBookingSubmit(event);">
+        <form id="ticket-booking-form">
           <div class="form-group">
             <label for="buyer-name">예매자명 *</label>
             <input type="text" id="buyer-name" required placeholder="본인 인증을 위한 성명을 입력하세요.">
@@ -702,44 +701,7 @@
     document.getElementById('nav-booking-btn').addEventListener('click', showBookingModal);
     document.getElementById('cta-book-tickets').addEventListener('click', showBookingModal);
 
-    // 폼 송신
-    function handleBookingSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('buyer-name').value;
-      const phone = document.getElementById('buyer-phone').value;
-      const qty = document.getElementById('ticket-quantity').value;
-      const totalPrice = (parseInt(qty) * 15000).toLocaleString() + " KRW";
-
-      const submitBtn = document.getElementById('confirm-booking-btn');
-      submitBtn.innerText = '예매 처리 중...';
-      submitBtn.disabled = true;
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzM6Xh2_bW0-w9Z9lT46mK_NfQ0Sbyz-VepW63Gv2P-D-UoZ0gN_eUuHOnLAtQ5_ZpQ/exec';
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('phone', phone);
-      formData.append('quantity', qty);
-
-      fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => response.json())
-        .then(result => {
-          document.getElementById('receipt-no').innerText = result.bookingId || 'OT-' + Math.floor(Math.random() * 90000000 + 10000000);
-          document.getElementById('receipt-name').innerText = name;
-          document.getElementById('receipt-qty').innerText = qty + '매';
-          document.getElementById('receipt-total').innerText = totalPrice;
-
-          document.getElementById('booking-stage-form').classList.add('display-none');
-          document.getElementById('booking-stage-success').classList.remove('display-none');
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          alert("예매 처리 중 통신 오류가 발생했습니다. 다시 시도해 주세요.");
-        })
-        .finally(() => {
-          submitBtn.innerText = '예매 신청 완료하기';
-          submitBtn.disabled = false;
-        });
-    }
+    // 【修正】 重複しエラーの原因となっていた handleBookingSubmit(e) 関数を丸ごと削除
 
     // --- UI 연출 관련 ---
     document.addEventListener('DOMContentLoaded', () => {
