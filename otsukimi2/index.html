@@ -562,7 +562,7 @@
           </div>
         </div>
 
-        <form id="ticket-booking-form">
+        <form id="ticket-booking-form" onsubmit="return handleBookingSubmit(event)">
           <div class="form-group">
             <label for="buyer-name">예매자명 *</label>
             <input type="text" id="buyer-name" required placeholder="본인 인증을 위한 성명을 입력하세요.">
