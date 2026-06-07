@@ -1058,7 +1058,9 @@ footer {
 
 .modal-social-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .modal-social-btn {
@@ -1089,6 +1091,14 @@ footer {
 
 .ig-btn i {
   color: #e1306c;
+}
+
+.x-btn i {
+  color: #000000;
+}
+
+.yt-btn i {
+  color: #ff0000;
 }
 
 /* ==========================================================================

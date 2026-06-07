@@ -94,27 +94,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const djProfiles = {
     ikumante: {
       name: "ikumante",
-      bio: "ikumante는 아날로그 신디사이저와 정교한 모듈러 시스템을 다루며 차갑고도 우주적인 질감의 하드 테크노 사운드를 구축하는 일렉트로닉 프로듀서입니다. 미니멀한 비트 루프 위로 서서히 고조되는 가공할 만한 사운드월(Soundwall)을 통해 관객들을 기하학적이고 트랜스적인 청각적 명상의 세계로 안내합니다."
+      bio: "이 사람을 찾고 있습니다.",
+      sns: {
+        instagram: "https://www.instagram.com/mante_1118",
+        youtube: "https://www.youtube.com/@ikumante"
+      }
     },
     murasaki: {
       name: "MURASAKI",
-      bio: "MURASAKI는 보라색 네온 조명이 흐르는 지하 클럽 신에서 가장 뜨거운 주목을 받고 있는 하이 에너지 베이스 뮤직 디제이입니다. 육중한 퓨처 베이스, 트랩, 그리고 가슴을 찌르는 덥스텝 비트를 넘나들며 페스티벌급의 거대한 폭발력을 클럽 플로어에 고스란히 이식합니다."
+      bio: "오오츠카아이와 퍼퓸과 하츠네미쿠를 듣다보니 디제이가 되었습니다. 잘 부탁드립니다.",
+      sns: {
+        instagram: "https://www.instagram.com/murasaki_jsn/"
+      }
     },
     norts: {
       name: "Norts",
-      bio: "Norts는 깊고 묵직한 딥 하우스(Deep House)의 그루브와 펑키한 미니멀 비트를 절묘하게 직조해 내는 댄스플로어의 조율사입니다. 음악적 유행에 타협하지 않고, 스피커 전체를 가득 채우는 깊은 저음역과 긴장감 넘치는 세련된 퍼커션 사운드로 관객들이 지치지 않고 밤새도록 춤을 출 수 있는 최적의 바이브를 설계합니다."
+      bio: "일본을 기반으로 활동하는 음악·광고 프로듀서. 크리에이터로서 곡 및 영상 제작을 직접 다룰 뿐만 아니라, 음악 레이블 ‘Oshiribeat’의 운영과 전체적인 제작 디렉션을 이끌고 있다.\n\n또한 DJ로도 활동 중이며, K-POP을 빠른 BPM으로 리믹스한 독창적인 ‘K-CORE’ 스타일을 확립했다. 한국 현지에서의 이벤트 주최 및 게스트 참여 등 글로벌 씬에서도 다수의 실적을 보유하고 있다.",
+      sns: {
+        instagram: "https://www.instagram.com/streak_ap/",
+        x: "https://x.com/DJ_Norts"
+      }
     },
     yutan: {
-      name: "유ー탄 (YUTAN)",
-      bio: "유ー탄은 청량하고 중독성 강한 오리지널 제이팝(J-POP) 트랙과 서브컬처 애니메이션 리믹스를 유로비트, 해피 하드코어 스타일과 결합해 전파하는 독보적인 텐션 마스터입니다. 지칠 틈 없는 빠른 템포의 전개와 무대를 압도하는 특유의 밝고 유쾌한 에너지로 클럽 안의 모두를 하나로 연결합니다."
+      name: "Yu-Tan",
+      bio: "DJ/TrackMaker/Singer\n\n현재는 아키하바라 MOGRA에서 정기 개최 중인 'DressingRoom'의 레귤러 DJ. 애니송이나 Vtuber, 성우 곡부터 K-POP까지 장르를 넘나들며 플레이하는 스타일로 지지를 받고 있으며, DJ로서 일본 각지의 이벤트에 출연.\n\n싱어(Singer)로 활동하던 시절에 들었던 비(Rain)를 계기로 K-POP에 매료되어, 그 지식을 활용해 K-POP DJ로도 활동 중.\n\n2026년에는 마찬가지로 MOGRA에서 개최되는 K-POP 이벤트 'LiarLiar'에도 출연하며 K-POP DJ로서의 활동 범위를 넓혀가고 있다.",
+      sns: {
+        instagram: "https://www.instagram.com/yuuki_tan8701"
+      }
     },
     tkg: {
       name: "TKG",
-      bio: "TKG는 정통 미니멀 테크노와 다크 테크 하우스를 기반으로 활동하며 청중의 청각을 최면 상태로 빠뜨리는 정밀한 루프 아티스트입니다. 반복적인 킥 드럼 패턴 속에 미세하게 변화하는 신스 텍스처를 배치하여 댄스플로어에 발을 디딘 모든 이들이 이성을 잊고 사운드 자체에 몰입하게 만듭니다."
+      bio: "도쿄 조후에 위치한 라이브 하우스 / 클럽 '조후 Cross' 점장 / 밴드 RUNRUNRUNS의 베이시스트.\n\nK-POP을 중심으로 DISCO / HOUSE 등 댄스 뮤직 위주로 DJ 활동 중.\n\n2022년부터 조후 Cross에서 시작한 K-POP DJ 파티 'Feel So Good'을 '이쿠만테의 밤'과 공동 주최하며, 올해로 5년째를 맞이하고 있다.\n\n술을 마시는 방식과 음악을 즐기는 방법이 파멸적입니다.",
+      sns: {
+        instagram: "https://www.instagram.com/tkg_suke/",
+        soundcloud: "https://soundcloud.com/h5bjsvpkj5eu"
+      }
     },
     calyne: {
       name: "CALYNE",
-      bio: "CALYNE은 서정적이고 몽환적인 멜로디 라인을 거대한 프로그레시브 하우스 및 트랜스 빌드업 속에 녹여내는 사운드 스토리텔러입니다. 밤하늘의 흐르는 달빛처럼 감성적이면서도 드라마틱한 기승전결의 연출을 통해 관객들의 마음 깊은 곳을 울리는 특별한 감동의 순간을 선사합니다."
+      bio: "95년생, 도쿄\n\nPOPS를 중심으로 R&B, House 등 다양한 장르의 음악을 셀렉트합니다.\n\n한국 문화에 매료되어 한 달 한번 한국에 갑니다.\n\n순대국 맛집 정보와 남친 모집 중! ㅎㅎㅎ",
+      sns: {
+        soundcloud: "https://on.soundcloud.com/OwZX3FuNezvmTzCUPs"
+      }
     },
     subun: {
       name: "SUBUN",
@@ -139,6 +160,46 @@ document.addEventListener('DOMContentLoaded', () => {
           const imgSrc = card.querySelector('.dj-portrait').getAttribute('src');
           document.getElementById('modal-dj-img').setAttribute('src', imgSrc);
           document.getElementById('modal-dj-img').setAttribute('alt', profile.name);
+
+          // Populate SNS links dynamically
+          const snsContainer = document.getElementById('modal-dj-sns');
+          if (snsContainer) {
+            snsContainer.innerHTML = '';
+            if (profile.sns) {
+              Object.entries(profile.sns).forEach(([platform, url]) => {
+                const btn = document.createElement('a');
+                btn.href = url;
+                btn.target = '_blank';
+                btn.rel = 'noopener noreferrer';
+                
+                let iconClass = '';
+                let btnClass = '';
+                let label = '';
+                
+                if (platform === 'instagram') {
+                  iconClass = 'fa-brands fa-instagram';
+                  btnClass = 'ig-btn';
+                  label = 'Instagram';
+                } else if (platform === 'soundcloud') {
+                  iconClass = 'fa-brands fa-soundcloud';
+                  btnClass = 'sc-btn';
+                  label = 'SoundCloud';
+                } else if (platform === 'x') {
+                  iconClass = 'fa-brands fa-x-twitter';
+                  btnClass = 'x-btn';
+                  label = 'X';
+                } else if (platform === 'youtube') {
+                  iconClass = 'fa-brands fa-youtube';
+                  btnClass = 'yt-btn';
+                  label = 'YouTube';
+                }
+                
+                btn.className = `modal-social-btn ${btnClass}`;
+                btn.innerHTML = `<i class="${iconClass}"></i> ${label}`;
+                snsContainer.appendChild(btn);
+              });
+            }
+          }
 
           djModal.classList.add('active');
           document.body.style.overflow = 'hidden';
