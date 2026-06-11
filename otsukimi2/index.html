@@ -383,8 +383,8 @@
             <input type="text" id="buyer-name" required placeholder="본인 인증을 위한 성명을 입력하세요.">
           </div>
           <div class="form-group">
-            <label for="buyer-phone">휴대폰 번호 *</label>
-            <input type="tel" id="buyer-phone" required placeholder="010-1234-5678 (예매 번호 발송용)">
+            <label for="buyer-email">이메일 주소 *</label>
+            <input type="email" id="buyer-email" required placeholder="example@email.com (예매 번호 발송용)">
           </div>
           <div class="form-group">
             <label for="ticket-quantity">예매 수량 *</label>
@@ -402,14 +402,14 @@
           <button type="submit" class="cta-button booking-submit-btn" id="confirm-booking-btn">예매 신청 완료하기</button>
         </form>
       </div>
-
+ 
       <div id="booking-stage-success" class="display-none text-center">
         <div class="success-icon animate-bounce">
           <i class="fa-solid fa-circle-check"></i>
         </div>
         <h2 class="booking-modal-title font-lime">예매가 성공적으로 접수되었습니다!</h2>
         <p class="success-message">달빛 아래 가슴 뛰는 밤을 함께 즐겨주셔서 감사합니다.</p>
-
+ 
         <div class="booking-receipt glass-panel">
           <div class="receipt-row">
             <span class="receipt-label">예매 번호:</span>
@@ -428,8 +428,8 @@
             <span class="receipt-value font-lime" id="receipt-total">15,000 KRW</span>
           </div>
         </div>
-
-        <p class="success-footer">※ 입력하신 휴대폰 번호로 모바일 티켓 링크가 전송되었습니다.<br>입장 시 모바일 티켓 화면과 실물 신분증을 제시해 주시기 바랍니다.</p>
+ 
+        <p class="success-footer">※ 입력하신 이메일 주소로 모바일 티켓 링크가 전송되었습니다.<br>입장 시 모바일 티켓 화면과 실물 신분증을 제시해 주시기 바랍니다.</p>
         <button class="cta-button" id="close-success-btn">홈으로 돌아가기</button>
       </div>
     </div>

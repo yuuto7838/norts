@@ -139,7 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     subun: {
       name: "SUBUN",
-      bio: "SUBUN은 심장을 터뜨릴 듯한 무자비한 속도의 하드코어 테크노, 프렌치코어, 그리고 날카로운 인더스트리얼 텍스처로 무대를 폭발시키는 강력한 에너자이저입니다. 타협 없는 강렬한 타격감의 킥 사운드와 사정없이 쏟아지는 하이피치 신스 노이즈로 댄스플로어의 아드레날린을 한계치까지 끌어올립니다."
+      bio: "PUBLIC seoul Resident DJ\nSUBMARINE Captain\nK-Pop DJ crew KLOO\n\n안녕하세요수분입니다잘부탁드립니다\n신촌 야호-✌︎('ω')✌︎",
+      sns: {
+        instagram: "https://www.instagram.com/su6un",
+        soundcloud: "https://soundcloud.com/su6un"
+      }
     }
   };
 
@@ -324,7 +328,7 @@ window.handleBookingSubmit = function(e) {
 
   // 各フォームの値を取得
   const name = document.getElementById('buyer-name').value;
-  const phone = document.getElementById('buyer-phone').value;
+  const email = document.getElementById('buyer-email').value;
   const qty = parseInt(document.getElementById('ticket-quantity').value) || 1;
   const total = qty * 15000;
   const randomNo = 'OT-' + Math.floor(10000000 + Math.random() * 90000000);
@@ -333,7 +337,8 @@ window.handleBookingSubmit = function(e) {
   const bookingData = {
     receiptNo: randomNo,
     name: name,
-    phone: phone,
+    email: email,
+    phone: email, // GAS側のカラムキー定義との互換性を保つためのフォールバック
     qty: qty + '매',
     total: total.toLocaleString() + ' KRW'
   };
