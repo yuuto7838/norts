@@ -144,6 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
         instagram: "https://www.instagram.com/su6un",
         soundcloud: "https://soundcloud.com/su6un"
       }
+    },
+    essential_acid: {
+      name: "essential_acid",
+      bio: "도쿄를 기반으로 활동하는 DJ.\nUK Garage, Jersey Club, House를 중심으로 J-POP과 K-POP을 믹스한 장르리스한 플레이를 선보인다. 부유감 있는 사운드부터 고양감 넘치는 댄스 뮤직까지 자유자재로 연결하며, 기분 좋은 그루브로 플로어를 물들인다.\n\nGenre: UK Garage / Jersey Club / House / J-POP / K-POP"
     }
   };
 
