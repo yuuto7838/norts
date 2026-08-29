@@ -392,7 +392,7 @@ section {
 }
 
 /* =========================================================================
-   3. ABOUT SECTION
+   3. ABOUT SECTION (改行修正反映済み)
    ========================================================================= */
 .about-section {
   background-color: var(--color-canvas-soft);
@@ -409,13 +409,25 @@ section {
   box-shadow: var(--shadow-level-1);
 }
 
+/* タイトルの改行防止 & 可変フォントサイズ調整 */
+.about-title {
+  white-space: nowrap;
+  font-size: clamp(20px, 5vw, 36px);
+  word-break: keep-all;
+}
+
+/* 本文テキストの改行位置・揃え最適化 */
+.about-text {
+  text-align: left;
+}
+
 .about-text p {
   margin-bottom: var(--spacing-md);
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: var(--color-muted);
   font-size: 15px;
   line-height: 1.8;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 /* =========================================================================
@@ -547,7 +559,7 @@ section {
 }
 
 /* =========================================================================
-   5. TIMETABLE SECTION (1時間刻みデザイン)
+   5. TIMETABLE SECTION
    ========================================================================= */
 .timetable-section {
   background-color: var(--color-canvas-soft);
@@ -607,7 +619,6 @@ section {
   font-size: 15px;
 }
 
-/* タイムテーブル要素スタイル */
 .tt-item {
   margin-bottom: 8px;
   padding: 8px 10px;
@@ -886,6 +897,11 @@ section {
 
   .about-box {
     padding: 32px var(--spacing-md);
+  }
+
+  .about-text p {
+    text-align: left;
+    font-size: 14px;
   }
 
   .sticky-cta-title {
