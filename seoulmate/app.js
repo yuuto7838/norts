@@ -89,23 +89,57 @@ function initTicketGenerator() {
   const passId = document.getElementById('pass-id');
   const passQty = document.getElementById('pass-qty');
 
+  // GAS Webアプリ URL
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbymdm3N1-SUNLcCn__vHFrynj9lyePw9dwAj4KYvMdm3mn_2rMwEmW9dcshScDvOf3ggA/exec';
+
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = '発行中...';
+
     const nameVal = document.getElementById('user-name').value;
-    const qtyVal = document.getElementById('ticket-count').value;
+    const emailVal = document.getElementById('user-email').value;
 
     const randomId = 'SM-' + Math.floor(100000 + Math.random() * 900000);
 
-    passName.textContent = nameVal;
-    passId.textContent = randomId;
-    passQty.textContent = `${qtyVal} 枚`;
+    const payload = {
+      passId: randomId,
+      name: nameVal,
+      email: emailVal
+    };
 
-    passContainer.classList.remove('hidden');
-    passContainer.scrollIntoView({ behavior: 'smooth' });
+    try {
+      // GASへ非同期送信 (CORSエラー回避のため no-cors モード)
+      await fetch(GAS_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-    form.reset();
+      // 画面表示更新
+      passName.textContent = nameVal;
+      passId.textContent = randomId;
+      if (passQty) {
+        passQty.textContent = '1枚 (¥3,000)';
+      }
+
+      passContainer.classList.remove('hidden');
+      passContainer.scrollIntoView({ behavior: 'smooth' });
+
+      form.reset();
+    } catch (err) {
+      console.error('送信エラー:', err);
+      alert('エラーが発生しました。時間をおいて再度お試しください。');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'デジタルパスを発行する';
+    }
   });
 }
