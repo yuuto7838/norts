@@ -394,6 +394,10 @@ img, video {
   margin-bottom: 0;
 }
 
+.nobr {
+  display: inline-block;
+}
+
 .pc-only {
   display: inline;
 }
@@ -444,7 +448,6 @@ img, video {
   color: var(--color-on-primary);
 }
 
-/* ゲスト枠のアバターエリアを少し拡大 (220px -> 280px) */
 .artist-avatar-square {
   width: 100%;
   height: 280px;
@@ -458,8 +461,8 @@ img, video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%; /* 頭上が切れにくいよう位置調整 */
-  filter: grayscale(0%); /* 常時カラー化 */
+  object-position: center 20%;
+  filter: grayscale(0%);
   transition: transform var(--transition-fast);
 }
 
@@ -538,12 +541,11 @@ img, video {
   background-color: var(--color-field);
 }
 
-/* DJ画像をモノクロ解除して常にカラーで表示 */
 .dj-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(0%); /* 常時カラー化 */
+  filter: grayscale(0%);
   transition: transform var(--transition-fast);
 }
 
@@ -782,5 +784,27 @@ img, video {
     flex-direction: column-reverse;
     gap: var(--spacing-md);
     text-align: center;
+  }
+}
+
+/* モバイル表示（iPhone Pro Max含む480px以下）のスタイル調整 */
+@media (max-width: 480px) {
+  .heading-1 {
+    font-size: 28px;
+  }
+
+  .heading-2 {
+    font-size: 24px;
+  }
+
+  .about-box {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .about-text p {
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 }
