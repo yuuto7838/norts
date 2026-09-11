@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S(E)oul MATE | 日韓カルチャー音楽プラットフォーム</title>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- FontAwesome Icons (SNS & UI Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- 1. Header / Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <img src="assets/logo.png" alt="S(E)oul MATE" class="brand-logo-img">
+      </a>
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#lineup" class="nav-link">Line-up</a>
+        <a href="#timetable" class="nav-link">Timetable</a>
+        <a href="#venue" class="nav-link">Venue</a>
+        <a href="#rsvp" class="nav-link nav-cta-btn">Get Pass</a>
+      </nav>
+      <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main>
+
+    <!-- 2. Hero Section (KV Video & Large Logo) -->
+    <section id="hero" class="hero-band">
+      <div class="hero-video-wrap">
+        <video class="hero-video-bg" autoplay loop muted playsinline>
+          <source src="assets/yokoloop.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
+      <div class="container hero-content scroll-anim active">
+        <!-- Main Large KV Logo -->
+        <img src="assets/logo.png" alt="S(E)oul MATE" class="hero-logo-img scroll-anim active stagger-1">
+
+        <div class="hero-ctas scroll-anim active stagger-2">
+          <a href="#rsvp" class="button-primary">Get Your Pass</a>
+          <a href="#timetable" class="button-secondary">Timetable</a>
+        </div>
+      </div>
+
+      <a href="#about" class="hero-scroll-btn">
+        <span>SCROLL DOWN</span>
+        <div class="indicator-arrow"></div>
+      </a>
+    </section>
+
+    <!-- 下部固定 前売り券購入CTAバー -->
+    <div id="sticky-cta-bar" class="sticky-cta-bar">
+      <div class="container sticky-cta-inner">
+        <div class="sticky-cta-info">
+          <span class="sticky-cta-title">S(E)oul MATE</span>
+          <span class="sticky-cta-sub">2026.10.24 (SAT) @ 渋谷 PUBLIC PUBLIC</span>
+        </div>
+        <a href="#rsvp" class="button-primary sticky-cta-btn">前売り券を購入 (¥3,000)</a>
+      </div>
+    </div>
+
+    <!-- 3. About Section -->
+    <section id="about" class="about-section">
+      <div class="container scroll-anim">
+        <div class="about-box">
+          <span class="badge-pill">Concept</span>
+          <h2 class="heading-1 about-title" style="margin-top: var(--spacing-sm);">S(E)oul MATE とは</h2>
+          <div class="divider center"></div>
+
+          <div class="about-text">
+            <p>
+              『S(E)oul MATE』は、単なる音楽イベントを越え、日韓のカルチャーを繋ぐ新しい「プラットフォーム」です。
+            </p>
+            <p>
+              来場者に最先端のアーティストと出会う場を提供するだけでなく、音楽を軸に日韓の国境を越えた継続的なネットワークを築くことで、双方のカルチャーシーンをともに盛り上げ、育てていくことを目指しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Line-up Section -->
+    <section id="lineup" class="lineup-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Line-up</span>
+          <h2 class="heading-1">ARTISTS</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <!-- Korea Guest Artists -->
+        <div class="lineup-block">
+          <h3 class="heading-2 sub-heading">Korea Guest Artists</h3>
+          <div class="artists-grid-main">
+            <!-- Bakehour -->
+            <div class="feature-card scroll-anim stagger-1">
+              <div class="card-sticker-tag kr-live">LIVE / KR</div>
+
+              <div class="artist-avatar-square">
+                <img src="assets/bakehour.jpg" alt="Bakehour" class="artist-img">
+              </div>
+
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>Bakehour</h4>
+                  <span class="artist-origin-pill">yumetree & memethehouse</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                プロデューサーyumetreeとシンガーmemethehouseによる韓国のエレクトロニック・ミュージックユニット。2023年にデビュー。2026年2月にはDrum'n'Bassを軸としたEP『GAME OVER』をリリース。HIPHOPやR&B、House、DnBなど柔軟にトレンドを取り入れたポップな作風が特徴。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/l3akehour/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://music.apple.com/gb/artist/memethehouse/1568412914" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://open.spotify.com/intl-ja/artist/6puiCb3Yop0GJeAnN3Jc6o" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://www.youtube.com/channel/UCIvHPcDUz5wIouzF7jajm3A" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              </div>
+            </div>
+
+            <!-- NECTA -->
+            <div class="feature-card scroll-anim stagger-2">
+              <div class="card-sticker-tag kr-live">LIVE / KR</div>
+
+              <div class="artist-avatar-square">
+                <img src="assets/necta.jpg" alt="NECTA" class="artist-img">
+              </div>
+
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>NECTA</h4>
+                </div>
+              </div>
+              <p class="artist-bio">
+                韓国・ソウルを拠点に活動するエレクトロアーティスト。緻密な電子音とクールな歌声の対比が特徴。「エレクトロニックとヒップホップが激しく混ざり合った存在」と自らを定義。EP『Seoul Bizzare』が韓国大衆音楽賞の2部門へノミネートされ、2026年には1stアルバム『GIRLHOOD』をリリース。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/9necta9/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://music.apple.com/jp/artist/necta/1504039857" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://open.spotify.com/intl-ja/artist/41aotofRYK9RvrKFk5ZY5U" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://www.youtube.com/channel/UCeRvZrCZlkpgcGw0e2F32rg" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Japan Guest Artists -->
+        <div class="lineup-block" style="margin-top: var(--spacing-xxl);">
+          <h3 class="heading-2 sub-heading">Japan Guest Artists</h3>
+          <div class="artists-grid-main">
+            <!-- itoshin -->
+            <div class="feature-card scroll-anim stagger-1">
+              <div class="card-sticker-tag jp-live">LIVE / JP</div>
+
+              <div class="artist-avatar-square">
+                <img src="assets/itoshin.jpg" alt="itoshin" class="artist-img">
+              </div>
+
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>itoshin</h4>
+                  <span class="artist-origin-pill">Guest Artist</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                東京を中心に活動するアーティスト/プロデューサー。ジャンルを超えた緻密なサウンドメイクとエネルギッシュなパフォーマンスで国内主要クラブやフェスに多数出演。日韓のインディーズシーンを横断する独自の音楽アプローチを展開する。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/ito5shin/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://x.com/ito5shin" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+                <a href="https://music.apple.com/jp/artist/itoshin/1534680525" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://open.spotify.com/intl-ja/artist/6oAruMjCUqWWvGMrBJN3qi" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://soundcloud.com/asloundboy" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a>
+                <a href="https://itoshin.bandcamp.com/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-bandcamp"></i> Bandcamp</a>
+              </div>
+            </div>
+
+            <!-- BUDDAHOUSE -->
+            <div class="feature-card scroll-anim stagger-2">
+              <div class="card-sticker-tag jp-guest">DJ / JP</div>
+
+              <div class="artist-avatar-square">
+                <img src="assets/buddahouse.jpg" alt="BUDDAHOUSE" class="artist-img">
+              </div>
+
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>BUDDAHOUSE</h4>
+                  <span class="artist-origin-pill">Guest DJ</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                HouseやTechno、Bass Musicを縦横無尽にクロスオーバーさせる多才なトラックメーカー/DJ。グルーヴ感溢れる独自のミックスワークとポップで尖ったサウンドセンスで、ダンスフロアから絶大な支持を集めている。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://instagram.com" target="_blank" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://soundcloud.com" target="_blank" class="artist-social-link"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a>
+                <a href="https://twitter.com" target="_blank" class="artist-social-link"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DJs (名前のみ表示) -->
+        <div class="lineup-block" style="margin-top: var(--spacing-xxl);">
+          <h3 class="heading-2 sub-heading">DJs</h3>
+          <div class="djs-name-grid scroll-anim">
+            <div class="dj-name-item">1skr</div>
+            <div class="dj-name-item">CALYNE</div>
+            <div class="dj-name-item">essentialacid</div>
+            <div class="dj-name-item">hamakyo</div>
+            <div class="dj-name-item">kakigenkin</div>
+            <div class="dj-name-item">Norts</div>
+            <div class="dj-name-item">setomai</div>
+            <div class="dj-name-item">YON</div>
+            <div class="dj-name-item">Yuto Kanai</div>
+            <div class="dj-name-item">yutan</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Timetable Section (1時間区切り) -->
+    <section id="timetable" class="timetable-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Schedule</span>
+          <h2 class="heading-1">TIMETABLE</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="timetable-container scroll-anim">
+          <table class="timetable-table">
+            <thead>
+              <tr>
+                <th class="time-col">時間</th>
+                <th class="floor-col">メインフロア (Main Floor)</th>
+                <th class="floor-col">サブフロア (Sub Floor)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 23:00 - 00:00 -->
+              <tr>
+                <td class="time-cell">23:00</td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">YON</span>
+                    <span class="duration">23:00 - 00:00</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">kakigenkin</span>
+                    <span class="duration">23:00 - 23:45</span>
+                  </div>
+                  <div class="tt-item">
+                    <span class="artist-name">setomai</span>
+                    <span class="duration">23:45 - 00:35</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 00:00 - 01:00 -->
+              <tr>
+                <td class="time-cell">00:00</td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">Norts</span>
+                    <span class="duration">00:00 - 01:00</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">yutan</span>
+                    <span class="duration">00:35 - 01:20</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 01:00 - 02:00 -->
+              <tr>
+                <td class="time-cell">01:00</td>
+                <td>
+                  <div class="tt-item live-act">
+                    <span class="artist-name">itoshin (LIVE)</span>
+                    <span class="duration">01:10 - 01:40</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">essentialacid</span>
+                    <span class="duration">01:20 - 02:10</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 02:00 - 03:00 -->
+              <tr>
+                <td class="time-cell">02:00</td>
+                <td>
+                  <div class="tt-item live-act">
+                    <span class="artist-name">Bakehour (LIVE)</span>
+                    <span class="duration">02:00 - 02:20</span>
+                  </div>
+                  <div class="tt-item live-act">
+                    <span class="artist-name">Necta (LIVE)</span>
+                    <span class="duration">02:30 - 03:00</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">hamakyo</span>
+                    <span class="duration">02:10 - 02:55</span>
+                  </div>
+                  <div class="tt-item">
+                    <span class="artist-name">1skr</span>
+                    <span class="duration">02:55 - 03:45</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 03:00 - 04:00 -->
+              <tr>
+                <td class="time-cell">03:00</td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">Yuto Kanai</span>
+                    <span class="duration">03:00 - 04:00</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">CALYNE</span>
+                    <span class="duration">03:45 - 04:35</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 04:00 - 05:00 -->
+              <tr>
+                <td class="time-cell">04:00</td>
+                <td>
+                  <div class="tt-item">
+                    <span class="artist-name">BUDDAHOUSE</span>
+                    <span class="duration">04:00 - 05:00</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-item status-item">
+                    <span class="status-cell">SUB CLOSE (04:35)</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 05:00 CLOSE -->
+              <tr>
+                <td class="time-cell">05:00</td>
+                <td class="status-cell" colspan="2">CLOSE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Venue & Event Info -->
+    <section id="venue" class="venue-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Information</span>
+          <h2 class="heading-1">VENUE & ACCESS</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="venue-grid scroll-anim">
+          <div class="venue-info-box">
+            <h3>渋谷 PUBLIC PUBLIC</h3>
+            <p class="venue-address">
+              〒150-0042 東京都渋谷区宇田川町 XX-XX B1F
+            </p>
+            <ul class="venue-details-list">
+              <li><strong>DATE:</strong> 2026.10.24 (SAT)</li>
+              <li><strong>OPEN:</strong> 23:00 / <strong>CLOSE:</strong> 05:00</li>
+              <li><strong>DOOR:</strong> ¥3,500 (+1Drink)</li>
+              <li><strong>ADVANCE:</strong> ¥3,000 (+1Drink)</li>
+            </ul>
+          </div>
+          <div class="venue-map-box">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7472304892463!2d139.699042!3d35.659929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca7c807ef3f%3A0x6a0a037b587a8b0!2sShibuya%20Station!5e0!3m2!1sen!2sjp!4v1680000000000!5m2!1sen!2sjp"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. RSVP / Get Pass Form Section -->
+    <section id="rsvp" class="rsvp-section">
+      <div class="container scroll-anim">
+        <div class="rsvp-card">
+          <div class="section-header center">
+            <span class="badge-pill">Ticket</span>
+            <h2 class="heading-1">GET YOUR PASS</h2>
+            <p class="rsvp-desc">前売り券の取り置き予約を承ります。当日受付にてお支払いください。</p>
+            <div class="divider center"></div>
+          </div>
+
+          <form id="ticket-form" class="rsvp-form">
+            <div class="form-group">
+              <label for="user-name">お名前 (Full Name)</label>
+              <input type="text" id="user-name" required placeholder="山田 太郎">
+            </div>
+            <div class="form-group">
+              <label for="user-email">メールアドレス (Email)</label>
+              <input type="email" id="user-email" required placeholder="example@email.com">
+            </div>
+            <div class="form-group">
+              <label>枚数 (Quantity)</label>
+              <input type="text" value="1枚 (¥3,000)" readonly class="readonly-input">
+            </div>
+
+            <!-- 現金決済の注意書き -->
+            <p class="form-notice">※当日の入場料は現金決済にてお願いいたします。</p>
+
+            <button type="submit" class="button-primary submit-btn">デジタルパスを発行する</button>
+          </form>
+
+          <div id="issued-pass-container" class="issued-pass-container hidden">
+            <div class="digital-pass-card">
+              <div class="pass-header">
+                <span class="pass-event-title">S(E)oul MATE</span>
+                <span class="pass-badge">CONFIRMED</span>
+              </div>
+              <div class="pass-body">
+                <div class="pass-info-row">
+                  <span class="pass-label">NAME</span>
+                  <span id="pass-name" class="pass-value">-</span>
+                </div>
+                <div class="pass-info-row">
+                  <span class="pass-label">PASS ID</span>
+                  <span id="pass-id" class="pass-value">-</span>
+                </div>
+                <div class="pass-info-row">
+                  <span class="pass-label">QTY</span>
+                  <span id="pass-qty" class="pass-value">1枚 (¥3,000)</span>
+                </div>
+              </div>
+              <div class="pass-footer">
+                <p>当日受付にてこちらの画面をご提示ください。</p>
+                <p style="font-size: 10px; color: var(--color-accent); margin-top: 4px;">※現金決済のみ</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">&copy; 2026 S(E)oul MATE. All Rights Reserved.</p>
+      <div class="footer-sns">
+        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
