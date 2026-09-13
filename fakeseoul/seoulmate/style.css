@@ -412,6 +412,9 @@ img, video {
    ========================================================================= */
 .lineup-section {
   padding: var(--spacing-section) 0;
+  position: relative;
+  z-index: 1;
+  clear: both;
 }
 
 .sub-heading {
@@ -424,6 +427,7 @@ img, video {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
 .feature-card {
@@ -434,6 +438,7 @@ img, video {
   padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
+  height: auto;
 }
 
 .card-sticker-tag {
@@ -455,6 +460,7 @@ img, video {
   overflow: hidden;
   margin-bottom: var(--spacing-md);
   background-color: var(--color-field);
+  flex-shrink: 0;
 }
 
 .artist-img {
@@ -485,7 +491,6 @@ img, video {
   font-size: 14px;
   color: var(--color-text-muted);
   margin: var(--spacing-md) 0;
-  flex-grow: 1;
   line-height: 1.43;
 }
 
@@ -493,6 +498,7 @@ img, video {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
+  margin-top: auto;
 }
 
 .artist-social-link {
@@ -526,6 +532,7 @@ img, video {
   padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
+  height: auto;
   transition: transform var(--transition-fast);
 }
 .dj-card:hover {
@@ -539,6 +546,7 @@ img, video {
   overflow: hidden;
   margin-bottom: var(--spacing-sm);
   background-color: var(--color-field);
+  flex-shrink: 0;
 }
 
 .dj-img {
@@ -570,8 +578,11 @@ img, video {
   font-size: 13px;
   color: var(--color-text-muted);
   line-height: 1.5;
-  margin-bottom: var(--spacing-sm);
-  flex-grow: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+.dj-info .artist-social-links {
+  margin-top: auto;
 }
 
 /* =========================================================================
@@ -580,6 +591,9 @@ img, video {
 .timetable-section {
   padding: var(--spacing-section) 0;
   background-color: var(--color-canvas-soft);
+  position: relative;
+  z-index: 1;
+  clear: both;
 }
 
 .timetable-scroll-hint {
@@ -807,4 +821,35 @@ img, video {
     word-break: keep-all;
     overflow-wrap: anywhere;
   }
+}
+
+/* インラインブロックで区切り単位を保持 */
+.inline-block {
+  display: inline-block;
+}
+
+/* モバイル表示時のサイズ調整と崩れ防止 */
+@media (max-width: 480px) {
+  /* 見出しの文字サイズ調整と崩れ防止 */
+  .about-title {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* 本文もはみ出さないように設定 */
+  .about-text p {
+    font-size: 14px;
+    line-height: 1.75;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+.about-text {
+  text-align: left;
+  width: fit-content;
+  max-width: 820px;
+  margin: 0 auto;
 }
