@@ -91,25 +91,63 @@ function initRsvpForm() {
 
   if (!rsvpForm) return;
 
+  // 発行されたGASのWebアプリURLを設定
+  const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyEhu8MEViORuji_aeGNrfGCNGZd-tp-lMijLAbv3dW7r-c7WVEA8G8-pyyU3Hb6i6c/exec';
+
   const savedPass = localStorage.getItem('seoulmate_pass');
   if (savedPass) {
     const passData = JSON.parse(savedPass);
     renderDigitalPass(passData.name, passData.id);
   }
 
-  rsvpForm.addEventListener('submit', (e) => {
+  rsvpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nameInput = document.getElementById('user-name');
+    const emailInput = document.getElementById('user-email');
+    const submitBtn = rsvpForm.querySelector('.button-primary');
+
     if (!nameInput || !nameInput.value.trim()) return;
+    if (!emailInput || !emailInput.value.trim()) return;
 
     const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
     const passId = 'SM-' + Math.floor(100000 + Math.random() * 900000);
 
-    const passData = { name, id: passId };
-    localStorage.setItem('seoulmate_pass', JSON.stringify(passData));
+    // 二重送信防止＆ボタン表示変更
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中...';
+    }
 
-    renderDigitalPass(name, passId);
+    try {
+      // GASへフォームデータを送信
+      await fetch(GAS_WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email
+        })
+      });
+
+      // ローカルストレージへの保存とパス発行画面の描画
+      const passData = { name, email, id: passId };
+      localStorage.setItem('seoulmate_pass', JSON.stringify(passData));
+      renderDigitalPass(name, passId);
+
+    } catch (error) {
+      console.error('送信エラー:', error);
+      alert('予約処理中にエラーが発生しました。時間をおいて再度お試しください。');
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'デジタルパスを発行する';
+      }
+    }
   });
 
   function renderDigitalPass(name, id) {
