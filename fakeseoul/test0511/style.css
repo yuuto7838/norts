@@ -598,7 +598,7 @@ img, video {
 }
 
 /* =========================================================================
-   5. TIMETABLE SECTION
+   5. TIMETABLE SECTION (独立カラム型タイムライン)
    ========================================================================= */
 .timetable-section {
   padding: var(--spacing-section) 0;
@@ -608,11 +608,10 @@ img, video {
   clear: both;
 }
 
-/* PCではスクロールヒントを非表示、SPのみ表示 */
+/* SPのみスクロールヒントを表示 */
 .timetable-scroll-hint {
   display: none;
 }
-
 @media (max-width: 768px) {
   .timetable-scroll-hint {
     display: flex;
@@ -623,13 +622,12 @@ img, video {
     font-weight: 600;
     color: var(--color-text-muted);
     margin-bottom: var(--spacing-md);
-    letter-spacing: 0.02em;
   }
 }
 
-.timetable-container {
+/* タイムテーブル ボード外枠 */
+.tt-board-wrapper {
   overflow-x: auto;
-  position: relative;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-hairline);
   background-color: var(--color-canvas);
@@ -637,153 +635,190 @@ img, video {
   -webkit-overflow-scrolling: touch;
 }
 
-/* スクロールバーのスタイリング */
-.timetable-container::-webkit-scrollbar {
-  height: 6px;
-}
-.timetable-container::-webkit-scrollbar-track {
-  background: var(--color-canvas-soft);
-}
-.timetable-container::-webkit-scrollbar-thumb {
-  background: var(--color-hairline);
-  border-radius: var(--radius-full);
+.tt-board {
+  display: flex;
+  min-width: 660px; /* SPで横スクロールを保証 */
+  position: relative;
 }
 
-.timetable-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 620px; /* SPで横スクロールを保証し、情報崩れを防止 */
+/* 各カラム共通 */
+.tt-col {
+  display: flex;
+  flex-direction: column;
 }
 
-.timetable-table th,
-.timetable-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--color-hairline-soft);
-  vertical-align: middle;
-}
-
-.timetable-table th {
+/* ヘッダーセル */
+.tt-header-cell {
+  height: 56px;
   background-color: var(--color-canvas-soft);
-  text-align: left;
   border-bottom: 2px solid var(--color-hairline);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 16px;
 }
 
-/* SPスクロール時に左端のTIMEを固定 (Sticky Column) */
-.time-col {
-  width: 85px;
-  min-width: 85px;
+/* 1. TIME列 (左端 sticky 固定) */
+.tt-col-time {
+  width: 86px;
+  min-width: 86px;
   position: sticky;
   left: 0;
-  z-index: 5;
-  background-color: var(--color-canvas-soft);
-  text-align: center !important;
+  z-index: 30; /* 演者カードより常に前面 */
+  background-color: var(--color-canvas);
+  border-right: 1px solid var(--color-hairline);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.04);
+}
+
+.tt-col-time .tt-header-cell {
   font-size: 13px;
   font-weight: 700;
   color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  text-align: center;
+  align-items: center;
+  padding: 0;
   border-right: 1px solid var(--color-hairline);
 }
 
-.time-cell {
-  position: sticky;
+/* 上下にゆとりを持たせた高さ (956px) */
+.tt-time-track {
+  position: relative;
+  height: 956px;
+}
+
+.tt-hour-mark {
+  position: absolute;
   left: 0;
-  z-index: 4;
-  background-color: var(--color-canvas);
-  text-align: center;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tt-hour-mark span {
+  font-size: 13px;
   font-weight: 700;
-  font-size: 14px;
   color: var(--color-ink);
   font-variant-numeric: tabular-nums;
-  border-right: 1px solid var(--color-hairline);
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.04);
+  background-color: var(--color-canvas);
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline-soft);
 }
 
-.floor-col {
-  width: calc((100% - 85px) / 2);
+/* 2. FLOOR列 (メイン・サブ) */
+.tt-col-floor {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+  border-right: 1px solid var(--color-hairline-soft);
+}
+.tt-col-floor:last-child {
+  border-right: none;
 }
 
 .floor-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-ink);
   letter-spacing: 0.02em;
 }
-
 .floor-sub {
   font-size: 11px;
   color: var(--color-text-muted);
-  font-weight: 456;
-  margin-top: 2px;
 }
 
-/* タイムテーブル内のカード・アクトUI */
-.tt-act {
+/* 演者トラック領域 (高さ956px: 上下の余白込み) */
+.tt-floor-track {
+  position: relative;
+  height: 956px;
+  background-color: var(--color-canvas);
+}
+
+/* 正時の水平罫線ガイド */
+.tt-grid-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-hairline);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 演者カード共通 */
+.tt-card {
+  position: absolute;
+  left: 10px;
+  width: calc(100% - 20px);
+  border-radius: var(--radius-sm);
   background-color: var(--color-canvas-soft);
   border: 1px solid var(--color-hairline-soft);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
+  padding: 8px 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 3px;
+  z-index: 2;
+  overflow: hidden;
   transition: transform var(--transition-fast), background-color var(--transition-fast);
 }
-.tt-act:hover {
+.tt-card:hover {
   transform: translateY(-1px);
   background-color: #ededed;
 }
 
 .tt-artist {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-ink);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  white-space: nowrap;
 }
 .tt-sub-name {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--color-text-muted);
 }
 
 .tt-meta {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  white-space: nowrap;
 }
-
 .tt-badge {
-  font-size: 10px;
-  padding: 1px 6px;
+  font-size: 9px;
+  padding: 1px 5px;
   border-radius: var(--radius-full);
   background-color: var(--color-hairline);
   color: var(--color-ink);
   font-weight: 600;
 }
 
-/* LIVE ACT & GUEST DJ (全黒スタイル) */
-.tt-act.live-act,
-.tt-act.guest-act {
+/* LIVE アクト & GUEST DJ (全黒スタイル) */
+.tt-card.live-act,
+.tt-card.guest-act {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-on-primary);
 }
-.tt-act.live-act .tt-artist,
-.tt-act.guest-act .tt-artist {
+.tt-card.live-act .tt-artist,
+.tt-card.guest-act .tt-artist {
   color: var(--color-on-primary);
 }
-.tt-act.live-act .tt-meta,
-.tt-act.guest-act .tt-meta {
+.tt-card.live-act .tt-meta,
+.tt-card.guest-act .tt-meta {
   color: var(--color-text-faint);
 }
 
-/* LIVEバッジ (赤ピンク) */
 .live-pill {
-  font-size: 10px;
-  padding: 2px 8px;
+  font-size: 9px;
+  padding: 2px 7px;
   background-color: #ff3366;
   color: #ffffff;
   border-radius: var(--radius-full);
@@ -791,10 +826,9 @@ img, video {
   letter-spacing: 0.05em;
 }
 
-/* GUEST DJバッジ (白反転ピル) */
 .guest-pill {
-  font-size: 10px;
-  padding: 2px 8px;
+  font-size: 9px;
+  padding: 2px 7px;
   background-color: #ffffff;
   color: #141414;
   border-radius: var(--radius-full);
@@ -802,39 +836,37 @@ img, video {
   letter-spacing: 0.05em;
 }
 
-/* 進行中の矢印 (↓) */
-.arrow-cell {
-  text-align: center;
-}
-.tt-arrow {
-  display: inline-block;
-  color: var(--color-text-faint);
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-/* CLOSE 枠 */
-.tt-close-slot {
-  font-size: 12px;
+/* SUB CLOSE スロット */
+.tt-card-subclose {
+  position: absolute;
+  left: 10px;
+  width: calc(100% - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
   font-weight: 700;
   color: var(--color-text-muted);
-  letter-spacing: 0.05em;
-  padding: 6px 10px;
-  border-radius: var(--radius-full);
   background-color: var(--color-canvas-soft);
-  display: inline-block;
+  border: 1px dashed var(--color-hairline);
+  border-radius: var(--radius-sm);
+  z-index: 2;
 }
 
-.close-row {
+/* EVENT CLOSE フッターバー */
+.tt-board-footer {
+  width: 100%;
+  min-width: 660px;
+  height: 50px;
   background-color: var(--color-canvas-soft);
-}
-.tt-event-close {
-  text-align: center;
+  border-top: 2px solid var(--color-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 13px;
   font-weight: 700;
+  color: var(--color-text-muted);
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  padding: 4px 0;
 }
 
 /* =========================================================================

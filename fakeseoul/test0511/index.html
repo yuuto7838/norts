@@ -402,214 +402,164 @@
           <i class="fa-solid fa-arrows-left-right"></i> 左右にスクロールして両フロアを確認できます
         </div>
 
-        <!-- タイムテーブル本体 -->
-        <div class="timetable-container scroll-anim">
-          <table class="timetable-table">
-            <thead>
-              <tr>
-                <th class="time-col">TIME</th>
-                <th class="floor-col main-floor-head">
-                  <div class="floor-title">MAIN FLOOR</div>
-                  <div class="floor-sub">メインフロア</div>
-                </th>
-                <th class="floor-col sub-floor-head">
-                  <div class="floor-title">SUB FLOOR</div>
-                  <div class="floor-sub">サブフロア</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 23:00 -->
-              <tr>
-                <td class="time-cell">23:00</td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">YON</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:50 (50m)</div>
-                  </div>
-                </td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">kakigenkin</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:45 (45m)</div>
-                  </div>
-                </td>
-              </tr>
+        <!-- タイムテーブル本体 (独立カラム型タイムライン) -->
+        <div class="tt-board-wrapper scroll-anim">
+          <div class="tt-board">
 
-              <!-- 23:45 -->
-              <tr>
-                <td class="time-cell">23:45</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">setomai</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:45 - 00:35 (50m)</div>
-                  </div>
-                </td>
-              </tr>
+            <!-- 1. TIME 列 (左端 sticky 固定) -->
+            <div class="tt-col tt-col-time">
+              <div class="tt-header-cell">TIME</div>
+              <div class="tt-time-track">
+                <!-- 上下にゆとりを持たせた配置 (Base offset: 24px) -->
+                <div class="tt-hour-mark" style="top: 24px;"><span>23:00</span></div>
+                <div class="tt-hour-mark" style="top: 174px;"><span>00:00</span></div>
+                <div class="tt-hour-mark" style="top: 324px;"><span>01:00</span></div>
+                <div class="tt-hour-mark" style="top: 474px;"><span>02:00</span></div>
+                <div class="tt-hour-mark" style="top: 624px;"><span>03:00</span></div>
+                <div class="tt-hour-mark" style="top: 774px;"><span>04:00</span></div>
+                <div class="tt-hour-mark" style="top: 924px;"><span>05:00</span></div>
+              </div>
+            </div>
 
-              <!-- 23:50 -->
-              <tr>
-                <td class="time-cell">23:50</td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">Norts</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:50 - 00:35 (45m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+            <!-- 2. MAIN FLOOR 列 -->
+            <div class="tt-col tt-col-floor">
+              <div class="tt-header-cell">
+                <span class="floor-title">MAIN FLOOR</span>
+                <span class="floor-sub">メインフロア</span>
+              </div>
+              <div class="tt-floor-track">
+                <!-- 正時罫線ガイド -->
+                <div class="tt-grid-line" style="top: 24px;"></div>
+                <div class="tt-grid-line" style="top: 174px;"></div>
+                <div class="tt-grid-line" style="top: 324px;"></div>
+                <div class="tt-grid-line" style="top: 474px;"></div>
+                <div class="tt-grid-line" style="top: 624px;"></div>
+                <div class="tt-grid-line" style="top: 774px;"></div>
+                <div class="tt-grid-line" style="top: 924px;"></div>
 
-              <!-- 00:35 -->
-              <tr>
-                <td class="time-cell">00:35</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">Yu-tan</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 00:35 - 01:20 (45m)</div>
-                  </div>
-                </td>
-              </tr>
+                <!-- 演者カード (Base offset: 24px) -->
+                <!-- YON (23:00 - 23:50) -->
+                <div class="tt-card" style="top: 26px; height: 121px;">
+                  <div class="tt-artist">YON</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:50 (50m)</div>
+                </div>
 
-              <!-- 00:45 -->
-              <tr>
-                <td class="time-cell">00:45</td>
-                <td>
-                  <div class="tt-act live-act">
-                    <div class="tt-artist">ItoShin <span class="live-pill">LIVE</span></div>
-                    <div class="tt-meta">00:45 - 01:15 (30m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+                <!-- Norts (23:50 - 00:35) -->
+                <div class="tt-card" style="top: 149px; height: 110px;">
+                  <div class="tt-artist">Norts</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 23:50 - 00:35 (45m)</div>
+                </div>
 
-              <!-- 01:20 -->
-              <tr>
-                <td class="time-cell">01:20</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">essential_acid</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 01:20 - 02:10 (50m)</div>
-                  </div>
-                </td>
-              </tr>
+                <!-- ItoShin (00:45 - 01:15) LIVE -->
+                <div class="tt-card live-act" style="top: 286px; height: 72px;">
+                  <div class="tt-artist">ItoShin <span class="live-pill">LIVE</span></div>
+                  <div class="tt-meta">00:45 - 01:15 (30m)</div>
+                </div>
 
-              <!-- 01:25 -->
-              <tr>
-                <td class="time-cell">01:25</td>
-                <td>
-                  <div class="tt-act live-act">
-                    <div class="tt-artist">Bakehour <span class="live-pill">LIVE</span></div>
-                    <div class="tt-meta">01:25 - 01:45 (20m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+                <!-- Bakehour (01:25 - 01:45) LIVE -->
+                <div class="tt-card live-act" style="top: 386px; height: 48px;">
+                  <div class="tt-artist">Bakehour <span class="live-pill">LIVE</span></div>
+                  <div class="tt-meta">01:25 - 01:45 (20m)</div>
+                </div>
 
-              <!-- 01:55 -->
-              <tr>
-                <td class="time-cell">01:55</td>
-                <td>
-                  <div class="tt-act live-act">
-                    <div class="tt-artist">raz <span class="live-pill">LIVE</span></div>
-                    <div class="tt-meta">01:55 - 02:15 (20m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+                <!-- raz (01:55 - 02:15) LIVE -->
+                <div class="tt-card live-act" style="top: 461px; height: 48px;">
+                  <div class="tt-artist">raz <span class="live-pill">LIVE</span></div>
+                  <div class="tt-meta">01:55 - 02:15 (20m)</div>
+                </div>
 
-              <!-- 02:10 -->
-              <tr>
-                <td class="time-cell">02:10</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">SHORE <span class="tt-sub-name">(hamakyo)</span></div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 02:10 - 02:55 (45m)</div>
-                  </div>
-                </td>
-              </tr>
+                <!-- NECTA w/ Renée (02:25 - 02:55) LIVE -->
+                <div class="tt-card live-act" style="top: 536px; height: 72px;">
+                  <div class="tt-artist">NECTA w/ Renée <span class="live-pill">LIVE</span></div>
+                  <div class="tt-meta">02:25 - 02:55 (30m)</div>
+                </div>
 
-              <!-- 02:25 -->
-              <tr>
-                <td class="time-cell">02:25</td>
-                <td>
-                  <div class="tt-act live-act">
-                    <div class="tt-artist">NECTA w/ Renée <span class="live-pill">LIVE</span></div>
-                    <div class="tt-meta">02:25 - 02:55 (30m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+                <!-- Yuto Kanai (03:00 - 04:00) -->
+                <div class="tt-card" style="top: 626px; height: 146px;">
+                  <div class="tt-artist">Yuto Kanai</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 03:00 - 04:00 (60m)</div>
+                </div>
 
-              <!-- 02:55 -->
-              <tr>
-                <td class="time-cell">02:55</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">1skr</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 02:55 - 03:45 (50m)</div>
-                  </div>
-                </td>
-              </tr>
+                <!-- BUDDHAHOUSE (04:00 - 05:00) GUEST DJ / 全黒 -->
+                <div class="tt-card guest-act" style="top: 776px; height: 146px;">
+                  <div class="tt-artist">BUDDHAHOUSE <span class="guest-pill">GUEST DJ</span></div>
+                  <div class="tt-meta">04:00 - 05:00 (60m)</div>
+                </div>
+              </div>
+            </div>
 
-              <!-- 03:00 -->
-              <tr>
-                <td class="time-cell">03:00</td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">Yuto Kanai</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 03:00 - 04:00 (60m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+            <!-- 3. SUB FLOOR 列 -->
+            <div class="tt-col tt-col-floor">
+              <div class="tt-header-cell">
+                <span class="floor-title">SUB FLOOR</span>
+                <span class="floor-sub">サブフロア</span>
+              </div>
+              <div class="tt-floor-track">
+                <!-- 正時罫線ガイド -->
+                <div class="tt-grid-line" style="top: 24px;"></div>
+                <div class="tt-grid-line" style="top: 174px;"></div>
+                <div class="tt-grid-line" style="top: 324px;"></div>
+                <div class="tt-grid-line" style="top: 474px;"></div>
+                <div class="tt-grid-line" style="top: 624px;"></div>
+                <div class="tt-grid-line" style="top: 774px;"></div>
+                <div class="tt-grid-line" style="top: 924px;"></div>
 
-              <!-- 03:45 -->
-              <tr>
-                <td class="time-cell">03:45</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-act">
-                    <div class="tt-artist">CALYNE</div>
-                    <div class="tt-meta"><span class="tt-badge">DJ</span> 03:45 - 04:35 (50m)</div>
-                  </div>
-                </td>
-              </tr>
+                <!-- 演者カード (Base offset: 24px) -->
+                <!-- kakigenkin (23:00 - 23:45) -->
+                <div class="tt-card" style="top: 26px; height: 110px;">
+                  <div class="tt-artist">kakigenkin</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:45 (45m)</div>
+                </div>
 
-              <!-- 04:00 (全黒・GUEST DJバッジ) -->
-              <tr>
-                <td class="time-cell">04:00</td>
-                <td>
-                  <div class="tt-act guest-act">
-                    <div class="tt-artist">BUDDHAHOUSE <span class="guest-pill">GUEST DJ</span></div>
-                    <div class="tt-meta">04:00 - 05:00 (60m)</div>
-                  </div>
-                </td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-              </tr>
+                <!-- setomai (23:45 - 00:35) -->
+                <div class="tt-card" style="top: 138px; height: 121px;">
+                  <div class="tt-artist">setomai</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 23:45 - 00:35 (50m)</div>
+                </div>
 
-              <!-- 04:35 -->
-              <tr>
-                <td class="time-cell">04:35</td>
-                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
-                <td>
-                  <div class="tt-close-slot">SUB CLOSE (04:35)</div>
-                </td>
-              </tr>
+                <!-- Yu-tan (00:35 - 01:20) -->
+                <div class="tt-card" style="top: 263px; height: 110px;">
+                  <div class="tt-artist">Yu-tan</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 00:35 - 01:20 (45m)</div>
+                </div>
 
-              <!-- 05:00 -->
-              <tr class="close-row">
-                <td class="time-cell">05:00</td>
-                <td colspan="2">
-                  <div class="tt-event-close">EVENT CLOSE (05:00)</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <!-- essential_acid (01:20 - 02:10) -->
+                <div class="tt-card" style="top: 376px; height: 121px;">
+                  <div class="tt-artist">essential_acid</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 01:20 - 02:10 (50m)</div>
+                </div>
+
+                <!-- SHORE (hamakyo) (02:10 - 02:55) -->
+                <div class="tt-card" style="top: 501px; height: 110px;">
+                  <div class="tt-artist">SHORE <span class="tt-sub-name">(hamakyo)</span></div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 02:10 - 02:55 (45m)</div>
+                </div>
+
+                <!-- 1skr (02:55 - 03:45) -->
+                <div class="tt-card" style="top: 613px; height: 121px;">
+                  <div class="tt-artist">1skr</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 02:55 - 03:45 (50m)</div>
+                </div>
+
+                <!-- CALYNE (03:45 - 04:35) -->
+                <div class="tt-card" style="top: 738px; height: 121px;">
+                  <div class="tt-artist">CALYNE</div>
+                  <div class="tt-meta"><span class="tt-badge">DJ</span> 03:45 - 04:35 (50m)</div>
+                </div>
+
+                <!-- SUB CLOSE (04:35 - 05:00) -->
+                <div class="tt-card-subclose" style="top: 864px; height: 58px;">
+                  <span>SUB CLOSE (04:35)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- EVENT CLOSE フッターバー -->
+          <div class="tt-board-footer">
+            <span>EVENT CLOSE (05:00)</span>
+          </div>
         </div>
       </div>
     </section>
