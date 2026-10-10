@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S(E)OULMATE</title>
+  <meta name="description" content="S(E)OULMATE - 日韓のカルチャーを繋ぐ音楽プラットフォーム">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- FontAwesome Icons (SNS & UI Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- 1. Header / Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#lineup" class="nav-link">Line-up</a>
+        <a href="#timetable" class="nav-link">Timetable</a>
+        <a href="#venue" class="nav-link">Venue</a>
+        <a href="#rsvp" class="nav-link nav-cta-btn">入場予約する</a>
+      </nav>
+      <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main>
+
+    <!-- 2. Hero Section (KV Video & Large Logo) -->
+    <section id="hero" class="hero-band">
+      <div class="hero-video-wrap">
+        <video class="hero-video-bg" autoplay loop muted playsinline>
+          <source src="assets/yokoloop.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
+      <div class="container hero-content scroll-anim active">
+        <!-- Main Large KV Logo -->
+        <img src="assets/logo.png" alt="S(E)OULMATE" class="hero-logo-img scroll-anim active stagger-1">
+
+        <div class="hero-ctas scroll-anim active stagger-2">
+          <a href="#rsvp" class="button-primary">入場予約する</a>
+          <a href="#timetable" class="button-secondary">タイムテーブル</a>
+        </div>
+      </div>
+
+      <a href="#about" class="hero-scroll-btn">
+        <span>SCROLL DOWN</span>
+        <div class="indicator-arrow"></div>
+      </a>
+    </section>
+
+    <!-- 下部固定 入場予約CTAバー -->
+    <div id="sticky-cta-bar" class="sticky-cta-bar">
+      <div class="container sticky-cta-inner">
+        <div class="sticky-cta-info">
+          <span class="sticky-cta-title">S(E)OULMATE</span>
+          <span class="sticky-cta-sub">2026.10.24 (SAT) @ 渋谷 宝ビル B1</span>
+        </div>
+        <a href="#rsvp" class="button-primary sticky-cta-btn">入場予約する (¥3,000)</a>
+      </div>
+    </div>
+
+    <!-- 3. About Section -->
+    <section id="about" class="about-section">
+      <div class="container scroll-anim">
+        <div class="about-box" style="max-width: 1000px; margin: 0 auto; padding: 4rem 3rem; text-align: center;">
+          <span class="badge-pill">Concept</span>
+
+          <h2 class="heading-1 about-title" style="margin-top: var(--spacing-sm); font-size: 1.65rem; line-height: 1.4; word-break: keep-all; overflow-wrap: break-word;">
+            S(E)OULMATEは、音楽イベントではなく、<br>カルチャーをつなぐプラットフォームです。
+          </h2>
+
+          <div class="divider center"></div>
+
+          <div class="about-text" style="font-size: 0.95rem; line-height: 1.9; max-width: 860px; width: 100%; margin: 0 auto; text-align: justify; text-justify: inter-ideograph;">
+            <p style="margin-bottom: 1.6rem;">
+              韓国カルチャーとダンスミュージックを軸に、人・音楽・ファッション・アートが交わるコミュニティを育みます。
+            </p>
+            <p style="margin-bottom: 1.6rem;">
+              来場者が新しいカルチャーやクリエイターと出会うだけでなく、<br>
+              日本と韓国のインディーアーティストが互いのシーンへアクセスし、新たな表現やコラボレーションを生み出すきっかけを提供します。
+            </p>
+            <p style="margin-bottom: 1.6rem;">
+              韓国のアーティストには日本で、日本のアーティストには韓国で活動する機会を広げ、<br>
+              国境を越えた継続的なネットワークを築くことで、日韓のカルチャーシーンをともに育てていくことを目指します。
+            </p>
+            <p style="margin-bottom: 0;">
+              日本と韓国、それぞれのアートシーンを牽引するトップランナーから、世界へ活動の幅を広げようとする次世代のDJ・アーティストまでをボーダレスに招聘します。パーツごとにフォーカスするジャンルを鮮やかに変化させる一連の企画を通し、出演者個々のアイデンティティを緻密に編み込みながら、一夜の壮大なストーリーへと昇華させます。さらに、それぞれのジャンルに最も適したベニューを厳選して開催することで、パーティーごとに全く異なる世界観を提示し、カルチャーが交わる新たなコミュニティと、未知なる音楽との新しい出会いや化学反応を多角的に創出します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Line-up Section -->
+    <section id="lineup" class="lineup-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Line-up</span>
+          <h2 class="heading-1">ARTISTS</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <!-- ARTISTS from SEOUL -->
+        <div class="lineup-block">
+          <h3 class="heading-2 sub-heading">ARTISTS from SEOUL</h3>
+          <div class="artists-grid-main">
+            <!-- Bakehour -->
+            <div class="feature-card scroll-anim stagger-1">
+              <div class="card-sticker-tag">LIVE / KR</div>
+              <div class="artist-avatar-square">
+                <img src="assets/bakehour.jpg" alt="Bakehour" class="artist-img">
+              </div>
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>Bakehour</h4>
+                  <span class="artist-origin-pill">yumetree & memethehouse</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                プロデューサーyumetreeとシンガーmemethehouseによる韓国のエレクトロニック・ミュージックユニット。2023年にデビュー。2026年2月にはDrum'n'Bassを軸としたEP『GAME OVER』をリリース。HIPHOPやR&B、House、DnBなど柔軟にトレンドを取り入れたポップな作風が特徴。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/l3akehour/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://open.spotify.com/intl-ja/artist/6puiCb3Yop0GJeAnN3Jc6o" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://music.apple.com/us/artist/bakehour/1688679329?l=ko" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://www.youtube.com/channel/UCIvHPcDUz5wIouzF7jajm3A" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              </div>
+            </div>
+
+            <!-- NECTA w/ Renée -->
+            <div class="feature-card scroll-anim stagger-2">
+              <div class="card-sticker-tag">LIVE / KR</div>
+              <div class="artist-avatar-square">
+                <img src="assets/necta.jpg" alt="NECTA w/ Renée" class="artist-img">
+              </div>
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>NECTA w/ Renée</h4>
+                </div>
+              </div>
+              <p class="artist-bio">
+                韓国・ソウルを拠点に活動するエレクトロアーティスト。緻密な電子音とクールな歌声の対比が特徴。「エレクトロニックとヒップホップが激しく混ざり合った存在」と自らを定義。EP『Seoul Bizzare』が韓国大衆音楽賞の2部門へノミネートされ、2026年には1stアルバム『GIRLHOOD』をリリース。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/9necta9/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://open.spotify.com/intl-ja/artist/41aotofRYK9RvrKFk5ZY5U" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://music.apple.com/jp/artist/necta/1504039857" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://www.youtube.com/channel/UCeRvZrCZlkpgcGw0e2F32rg" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              </div>
+            </div>
+
+            <!-- raz -->
+            <div class="feature-card scroll-anim stagger-3">
+              <div class="card-sticker-tag">LIVE / KR</div>
+              <div class="artist-avatar-square">
+                <img src="assets/raz.png" alt="raz" class="artist-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=raz'">
+              </div>
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>raz</h4>
+                </div>
+              </div>
+              <p class="artist-bio">
+                韓国を拠点に活動するラッパー／プロデューサー、raz。混沌や不安定さをエネルギーに変え、Hardcore Rageを軸に、エレクトロニックやオルタナティブなど多様な要素を融合させたサウンドを展開している。ジャンルにとらわれない自由なアプローチと独自のボーカルスタイルが特徴。2026年、シングル「fairytale」のリリースを機に、“RAZYBOYOCEAN”から新たな名義“raz”として本格的に活動をスタート。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/ilyr4z/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://open.spotify.com/intl-ja/artist/6puiCb3Yop0GJeAnN3Jc6o" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                <a href="https://music.apple.com/jp/artist/raz/6804902644" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                <a href="https://www.youtube.com/watch?v=pUjiwla0XaU" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARTISTS from TOKYO -->
+        <div class="lineup-block" style="margin-top: var(--spacing-xxl);">
+          <h3 class="heading-2 sub-heading">ARTISTS from TOKYO</h3>
+          <div class="artists-grid-main">
+            <!-- Itoshin -->
+            <div class="feature-card scroll-anim stagger-1">
+              <div class="card-sticker-tag">LIVE / JP</div>
+              <div class="artist-avatar-square">
+                <img src="assets/itoshin.jpg" alt="ItoShin" class="artist-img">
+              </div>
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>ItoShin</h4>
+                  <span class="artist-origin-pill">Music Producer / keybordist</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                Jazz、Housemusicを軸に様々なジャンルの楽曲を制作。<br>
+                国内レーベルからのリリース。楽曲提供、リミックス制作など様々な形式で活動中。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/ito5shin/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://x.com/ito5shin" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+              </div>
+            </div>
+
+            <!-- BUDDHAHOUSE -->
+            <div class="feature-card scroll-anim stagger-2">
+              <div class="card-sticker-tag">DJ / JP</div>
+              <div class="artist-avatar-square">
+                <img src="assets/budd.jpg" alt="BUDDHAHOUSE" class="artist-img">
+              </div>
+              <div class="artist-card-header">
+                <div class="artist-meta-info">
+                  <h4>BUDDHAHOUSE</h4>
+                  <span class="artist-origin-pill">Guest DJ</span>
+                </div>
+              </div>
+              <p class="artist-bio">
+                平成元年生まれ。札幌 山鼻出身のDJ / Producer 05年からDJとしての活動を開始。道内外での活動ののち16年に拠点を東京へ移す。<br>
+                16年、国内老舗ネットレーベルsabacanrecordsから初となるEP「Summer Breeze」をリリース。17年9月に自主レーベル「FRUIT PARLOR」を立ち上げ、18年4月、自身初となるミニアルバム「禁忌」を同レーベルよりリリース。iTunes electronic アルバムチャートにて1位獲得。<br>
+                全国各地のクラブから、"森、道、市場" "Music Unity" などの音楽フェスへの出演、鞘師里保のLIVEサポートなど、様々な現場で活動中。<br>
+                また、DJの他にもPARKGOLFとのPodcast「2名」が現在不定期配信中。
+              </p>
+              <div class="artist-social-links">
+                <a href="https://www.instagram.com/buddhahouse/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://twitter.com/_buddhahouse" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+                <a href="https://m.soundcloud.com/buddhahouse-1" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-soundcloud"></i> SoundCloud</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DJs Section -->
+        <div class="lineup-block" style="margin-top: var(--spacing-xxl);">
+          <h3 class="heading-2 sub-heading">DJs</h3>
+          <div class="djs-grid scroll-anim">
+
+            <!-- DJ 1 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/1skr.jpg" alt="1skr" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=1skr'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">1skr</h4>
+                <p class="dj-bio">京都生まれ、DJ、イベント企画者。不定期パーティー・シリーズ『Dialects』を主宰するほか音楽メディア『musit』にて連載企画など。暇さえあれば仁川空港に飛ぶ。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/soulflower_no1/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 2 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/dj_calyne.png" alt="CALYNE" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=CALYNE'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">CALYNE</h4>
+                <p class="dj-bio">2012年よりDJのキャリアをスタート。国内外のポップミュージックをベースにプレイし、韓国・タイなどグローバルに活動する。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/___t___c___k___/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 3 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/ess.webp" alt="essential_acid" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=essential_acid'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">essential_acid</h4>
+                <p class="dj-bio">ジャンルを横断しながらグルーヴを最優先に組み立てるDJ。ヒップホップ、UKベース、アマピアノ、ハウスなどを自在に織り交ぜ、フロアの空気を読みながら心地よい高揚感を生み出す。新旧・国内外を問わない選曲と、滑らかでストーリー性のあるミックスで、バーからクラブまで幅広い現場でプレイ。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/essential_____acid/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 4 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/hama.JPG" alt="SHORE" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=SHORE'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">SHORE</h4>
+                <p class="dj-bio">2021年DJ活動スタート。DJスタートと同時にK-POPに関心を持ち始め、2023年ごろからK-POPパーティーでもDJ活動をスタート。最新トレンドから往年の名曲、インディーなども混ぜ合わせ独自のグルーヴを追求中。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/dancing_on_the_shore/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 5 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/dj_kakigenkin.png" alt="kakigenkin" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=kakigenkin'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">kakigenkin</h4>
+                <p class="dj-bio">2023年に雑誌『ユリイカ』に評論「K-POPガールズグループにおけるラッパーの系譜――連鎖し、伝播するシスターフッド」を寄稿し文筆家デビュー。以降、韓国アーティストへのインタビューやアーティスト紹介コラム、ライブレポート、また韓国アーティストの新曲発表に合わせたプレスリリースの作成と配信協力などを継続的に行っている。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/kakigenkin/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 6 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/dj_norts.JPG" alt="Norts" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=Norts'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">Norts</h4>
+                <p class="dj-bio">2016年より音楽レーベル立ち上げ・楽曲制作を開始し、ゲーム音楽からPOPSまで幅広く手掛け、現在は会社でも正社員で音楽プロデューサーをしている。2019年にはDJ活動を開始し、国内外での出演やイベントオーガナイズを展開。広告代理店で培ったクリエイティブ・マーケティングの知見を活かしたサポートも行う。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/streak_ap/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 7 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/seto.webp" alt="setomai" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=setomai'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">setomai</h4>
+                <p class="dj-bio">2025年より東京を拠点にDJ活動を開始。幼少期からストリートダンス、学生時代にはジャズドラムを経験し音楽感覚を培う。R&B、UK Garage、HipHopなどブラックミュージックを軸にKorean Musicも織り交ぜたジャンルレスな選曲を得意とする。また韓国でのDJ出演など日韓の音楽カルチャーを横断する一方、多様な音楽カルチャーを繋ぐParty「Navy Jam」を主催。DJ・イベント企画の両面から活動の幅を広げている。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/ma__ima__i/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 8 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/yon.jpg" alt="YON" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=YON'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">YON</h4>
+                <p class="dj-bio">韓国出身、現在は日本を拠点に活動。K-POP、R&B、シティポップ、ディスコなど、時代やジャンル、国を越えたさまざまな音楽をミックス。異なる時代やカルチャーの音楽を自由に組み合わせ、どこか懐かしく、それでいて新鮮に感じられるような、楽しく踊れる空間を作り出す。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/juliaforeverlee/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 9 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/yuto.jpg" alt="Yuto Kanai" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=Yuto+Kanai'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">Yuto Kanai</h4>
+                <p class="dj-bio">2019年に東京を拠点としてDJをスタート。<br>現在はハウス/ディスコを中心にプレイ。<br>2022年、OMOIDE LABELの"JUKEしようや 5"に参加。<br>2026年、インディーロックバンド Puffのリミックスである"Bad Week (Yuto Kanai Remix) "をリリース。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/kanaiyuto/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- DJ 10 -->
+            <div class="dj-card">
+              <div class="dj-avatar-wrap">
+                <img src="assets/dj_yutan.png" alt="Yu-tan" class="dj-img" onerror="this.src='https://via.placeholder.com/300x300/f0f0f0/141414?text=Yu-tan'">
+              </div>
+              <div class="dj-info">
+                <h4 class="dj-name">Yu-tan</h4>
+                <p class="dj-bio">DJ / Trackmaker / Singer<br>現在は秋葉原 MOGRA にて定期開催中の「DressingRoom」でレギュラー DJ を担当。アニソンや Vtuber、声優楽曲から K-POP まで、ジャンルを横断してプレイするスタイルで支持を集めており、DJ として日本各地のイベントに出演している。<br>シンガーとして活動していた時期に聴いた Rain（ピ）をきっかけに K-POP の魅力にはまり、その知識を活かして K-POP DJ としても活動中。<br>2026年には同じく MOGRA で開催されている K-POP イベント「LiarLiar」にも出演し、K-POP DJ としての活動の幅をさらに広げている。</p>
+                <div class="artist-social-links">
+                  <a href="https://www.instagram.com/yuuki_tan8701/" target="_blank" rel="noopener noreferrer" class="artist-social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Timetable Section -->
+    <section id="timetable" class="timetable-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Schedule</span>
+          <h2 class="heading-1">TIMETABLE</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <!-- SP限定 スクロールヒント -->
+        <div class="timetable-scroll-hint scroll-anim">
+          <i class="fa-solid fa-arrows-left-right"></i> 左右にスクロールして両フロアを確認できます
+        </div>
+
+        <!-- タイムテーブル本体 -->
+        <div class="timetable-container scroll-anim">
+          <table class="timetable-table">
+            <thead>
+              <tr>
+                <th class="time-col">TIME</th>
+                <th class="floor-col main-floor-head">
+                  <div class="floor-title">MAIN FLOOR</div>
+                  <div class="floor-sub">メインフロア</div>
+                </th>
+                <th class="floor-col sub-floor-head">
+                  <div class="floor-title">SUB FLOOR</div>
+                  <div class="floor-sub">サブフロア</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 23:00 -->
+              <tr>
+                <td class="time-cell">23:00</td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">YON</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:50 (50m)</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">kakigenkin</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:00 - 23:45 (45m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 23:45 -->
+              <tr>
+                <td class="time-cell">23:45</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">setomai</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:45 - 00:35 (50m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 23:50 -->
+              <tr>
+                <td class="time-cell">23:50</td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">Norts</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 23:50 - 00:35 (45m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 00:35 -->
+              <tr>
+                <td class="time-cell">00:35</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">Yu-tan</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 00:35 - 01:20 (45m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 00:45 -->
+              <tr>
+                <td class="time-cell">00:45</td>
+                <td>
+                  <div class="tt-act live-act">
+                    <div class="tt-artist">ItoShin <span class="live-pill">LIVE</span></div>
+                    <div class="tt-meta">00:45 - 01:15 (30m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 01:20 -->
+              <tr>
+                <td class="time-cell">01:20</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">essential_acid</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 01:20 - 02:10 (50m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 01:25 -->
+              <tr>
+                <td class="time-cell">01:25</td>
+                <td>
+                  <div class="tt-act live-act">
+                    <div class="tt-artist">Bakehour <span class="live-pill">LIVE</span></div>
+                    <div class="tt-meta">01:25 - 01:45 (20m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 01:55 -->
+              <tr>
+                <td class="time-cell">01:55</td>
+                <td>
+                  <div class="tt-act live-act">
+                    <div class="tt-artist">raz <span class="live-pill">LIVE</span></div>
+                    <div class="tt-meta">01:55 - 02:15 (20m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 02:10 -->
+              <tr>
+                <td class="time-cell">02:10</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">SHORE <span class="tt-sub-name">(hamakyo)</span></div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 02:10 - 02:55 (45m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 02:25 -->
+              <tr>
+                <td class="time-cell">02:25</td>
+                <td>
+                  <div class="tt-act live-act">
+                    <div class="tt-artist">NECTA w/ Renée <span class="live-pill">LIVE</span></div>
+                    <div class="tt-meta">02:25 - 02:55 (30m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 02:55 -->
+              <tr>
+                <td class="time-cell">02:55</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">1skr</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 02:55 - 03:45 (50m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 03:00 -->
+              <tr>
+                <td class="time-cell">03:00</td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">Yuto Kanai</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 03:00 - 04:00 (60m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 03:45 -->
+              <tr>
+                <td class="time-cell">03:45</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-act">
+                    <div class="tt-artist">CALYNE</div>
+                    <div class="tt-meta"><span class="tt-badge">DJ</span> 03:45 - 04:35 (50m)</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- 04:00 (全黒・GUEST DJバッジ) -->
+              <tr>
+                <td class="time-cell">04:00</td>
+                <td>
+                  <div class="tt-act guest-act">
+                    <div class="tt-artist">BUDDHAHOUSE <span class="guest-pill">GUEST DJ</span></div>
+                    <div class="tt-meta">04:00 - 05:00 (60m)</div>
+                  </div>
+                </td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+              </tr>
+
+              <!-- 04:35 -->
+              <tr>
+                <td class="time-cell">04:35</td>
+                <td class="arrow-cell"><div class="tt-arrow">↓</div></td>
+                <td>
+                  <div class="tt-close-slot">SUB CLOSE (04:35)</div>
+                </td>
+              </tr>
+
+              <!-- 05:00 -->
+              <tr class="close-row">
+                <td class="time-cell">05:00</td>
+                <td colspan="2">
+                  <div class="tt-event-close">EVENT CLOSE (05:00)</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Venue & Event Info -->
+    <section id="venue" class="venue-section">
+      <div class="container">
+        <div class="section-header center scroll-anim">
+          <span class="badge-pill">Information</span>
+          <h2 class="heading-1">VENUE & ACCESS</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="venue-grid scroll-anim">
+          <div class="venue-info-box">
+            <h3>PUBLIC PUBLIC</h3>
+            <p class="venue-address">
+              〒150-0043 東京都渋谷区道玄坂１丁目１３−２ 宝ビル B1
+            </p>
+            <ul class="venue-details-list">
+              <li><strong>DATE:</strong> 2026.10.24 (SAT)</li>
+              <li><strong>OPEN:</strong> 23:00 / <strong>CLOSE:</strong> 05:00</li>
+              <li><strong>ADVANCE:</strong> ¥3,000 (+1Drink)</li>
+              <li><strong>DOOR:</strong> ¥3,500 (+1Drink)</li>
+            </ul>
+          </div>
+          <div class="venue-map-box">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.8105779038204!2d139.6970899!3d35.6582522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188caa2e860bc7%3A0xb304b7891cb5ee73!2z44CSMTUwLTAwNDMgS2FudG8sIFRva3lvLCBTaGlidXlhIENpdHksIETFjWdlbnpha2EsIDEgQ2hvbWXiiJIxM-KIgkIsIOCmneODk-ODqyBCMQ!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. RSVP / Get Pass Form Section -->
+    <section id="rsvp" class="rsvp-section">
+      <div class="container scroll-anim">
+        <div class="rsvp-card">
+          <div class="section-header center">
+            <span class="badge-pill">Ticket</span>
+            <h2 class="heading-1">RESERVATION</h2>
+            <p class="rsvp-desc">事前に入場予約を承ります。当日受付にてお支払いください。</p>
+            <p class="rsvp-notice-age" style="font-size: 12px; color: var(--color-ink-soft); font-weight: 600; margin-top: 6px;">
+              ※20歳未満入場不可。当日は写真付き身分証明書を必ずお持ちください。
+            </p>
+            <div class="divider center"></div>
+          </div>
+
+          <form id="ticket-form" class="rsvp-form">
+            <div class="form-group">
+              <label for="user-name">お名前・ニックネーム (Name / Nickname)</label>
+              <input type="text" id="user-name" required placeholder="例: タロウ / Taro (本名でなくても構いません)">
+              <span class="input-subnote" style="font-size: 11px; color: var(--color-text-muted); margin-top: 2px;">※当日の受付時に確認できるお名前（ニックネーム可）をご入力ください。</span>
+            </div>
+            <div class="form-group">
+              <label for="user-email">メールアドレス (Email)</label>
+              <input type="email" id="user-email" required placeholder="example@email.com">
+            </div>
+
+            <p class="form-notice" style="margin-top: 4px;">※お一人様1枚までのご予約となります。<br>※当日の入場料（¥3,000）は現金決済にてお願いいたします。</p>
+
+            <button type="submit" class="button-primary submit-btn">デジタルパスを発行する</button>
+          </form>
+
+          <div id="issued-pass-container" class="issued-pass-container hidden">
+            <div class="digital-pass-card">
+              <div class="pass-header">
+                <span class="pass-event-title">S(E)OULMATE</span>
+                <span class="pass-badge">CONFIRMED</span>
+              </div>
+              <div class="pass-body">
+                <div class="pass-info-row">
+                  <span class="pass-label">NAME</span>
+                  <span id="pass-name" class="pass-value">-</span>
+                </div>
+                <div class="pass-info-row">
+                  <span class="pass-label">PASS ID</span>
+                  <span id="pass-id" class="pass-value">-</span>
+                </div>
+                <div class="pass-info-row">
+                  <span class="pass-label">QTY</span>
+                  <span id="pass-qty" class="pass-value">1枚 (¥3,000)</span>
+                </div>
+              </div>
+              <div class="pass-footer">
+                <p>当日受付にてこちらの画面をご提示ください。</p>
+                <p style="font-size: 10px; color: var(--color-ink-soft); margin-top: 4px;">※現金決済のみ</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">&copy; 2026 FAKE SEOUL. All Rights Reserved.</p>
+      <div class="footer-sns">
+        <a href="https://www.instagram.com/annyonghaseyofakeseoulimnida/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UC8ZHYHAbBqWoi2S95oogIdQ" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://x.com/81FAKESEOUL" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.tiktok.com/@annyongfakeseoulimnida" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
