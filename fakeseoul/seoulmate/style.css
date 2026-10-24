@@ -932,6 +932,18 @@ img, video {
 
 .form-notice { font-size: 12px; color: var(--color-ink-soft); text-align: center; font-weight: 600; }
 
+/* RESERVATION CLOSED */
+.rsvp-closed {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--color-canvas-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.rsvp-closed-title { font-size: 18px; font-weight: 652; color: var(--color-ink); margin-bottom: var(--spacing-xs); }
+.rsvp-closed-text { font-size: 14px; color: var(--color-text-muted); line-height: 1.6; }
+
 /* DIGITAL PASS CARD */
 .issued-pass-container { margin-top: var(--spacing-xl); }
 .digital-pass-card {

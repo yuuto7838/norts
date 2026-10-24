@@ -84,77 +84,20 @@ function initScrollAnimations() {
    4. RSVP & DIGITAL PASS MANAGEMENT
    ========================================================================= */
 function initRsvpForm() {
-  const rsvpForm = document.getElementById('ticket-form');
+  // WEB予約は受付終了。予約済みの方には保存済みのデジタルパスのみ表示する
   const passContainer = document.getElementById('issued-pass-container');
   const passHolderName = document.getElementById('pass-name');
   const passIdDisplay = document.getElementById('pass-id');
 
-  if (!rsvpForm) return;
-
-  // 発行されたGASのWebアプリURLを設定
-  const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyEhu8MEViORuji_aeGNrfGCNGZd-tp-lMijLAbv3dW7r-c7WVEA8G8-pyyU3Hb6i6c/exec';
-
   const savedPass = localStorage.getItem('seoulmate_pass');
-  if (savedPass) {
+  if (!savedPass || !passContainer) return;
+
+  try {
     const passData = JSON.parse(savedPass);
-    renderDigitalPass(passData.name, passData.id);
-  }
-
-  rsvpForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const nameInput = document.getElementById('user-name');
-    const emailInput = document.getElementById('user-email');
-    const submitBtn = rsvpForm.querySelector('.button-primary');
-
-    if (!nameInput || !nameInput.value.trim()) return;
-    if (!emailInput || !emailInput.value.trim()) return;
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const passId = 'SM-' + Math.floor(100000 + Math.random() * 900000);
-
-    // 二重送信防止＆ボタン表示変更
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = '送信中...';
-    }
-
-    try {
-      // GASへフォームデータを送信
-      await fetch(GAS_WEB_APP_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email
-        })
-      });
-
-      // ローカルストレージへの保存とパス発行画面の描画
-      const passData = { name, email, id: passId };
-      localStorage.setItem('seoulmate_pass', JSON.stringify(passData));
-      renderDigitalPass(name, passId);
-
-    } catch (error) {
-      console.error('送信エラー:', error);
-      alert('予約処理中にエラーが発生しました。時間をおいて再度お試しください。');
-
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'デジタルパスを発行する';
-      }
-    }
-  });
-
-  function renderDigitalPass(name, id) {
-    if (passHolderName) passHolderName.textContent = name;
-    if (passIdDisplay) passIdDisplay.textContent = id;
-
-    rsvpForm.classList.add('hidden');
-    if (passContainer) passContainer.classList.remove('hidden');
+    if (passHolderName) passHolderName.textContent = passData.name;
+    if (passIdDisplay) passIdDisplay.textContent = passData.id;
+    passContainer.classList.remove('hidden');
+  } catch (error) {
+    console.error('パス読み込みエラー:', error);
   }
 }
