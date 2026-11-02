@@ -117,8 +117,9 @@
     font-family: var(--display); font-weight: 900; text-transform: uppercase;
     font-size: clamp(44px, 10.5vw, 190px); line-height: .88; letter-spacing: -.045em;
   }
-  .hero h1 .row { display: block; overflow: hidden; }
-  .hero h1 .row > span { display: inline-block; transform: translateY(105%); }
+  /* the clip box needs room above caps and below the comma; negative margin keeps the tight line spacing */
+  .hero h1 .row { display: block; overflow: hidden; padding: .14em .06em .14em 0; margin: -.14em 0; }
+  .hero h1 .row > span { display: inline-block; transform: translateY(130%); }
   .ready .hero h1 .row > span { animation: rise 1.1s cubic-bezier(.2,.9,.1,1) forwards; }
   .ready .hero h1 .row:nth-child(2) > span { animation-delay: .1s; }
   .ready .hero h1 .row:nth-child(3) > span { animation-delay: .2s; }
