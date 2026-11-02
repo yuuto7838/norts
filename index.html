@@ -1,103 +1,651 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-site-verification" content="uXCIUr0-KI-0l4PjoAZXGAjcKYghXwjggla_vcyreyc" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P50P0FE3G0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norts</title>
+<meta name="description" content="Producer / DJ / Label Founder / Designer / Ad">
+<link rel="icon" href="assets/logo-white.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Roboto+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ecebe6;
+    --fg: #0d0d0d;
+    --mute: #6d6d68;
+    --soft: #2a2a28;
+    --panel: #e2e1db;
+    --line: rgba(13,13,13,.16);
+    --ghost: rgba(13,13,13,.16);
+    --acid: #ff3b00;
+    --on-acid: #fff;
+    --display: "Unbounded", sans-serif;
+    --mono: "Roboto Mono", monospace;
+    --jp: "Noto Sans JP", sans-serif;
+    --gutter: clamp(16px, 4vw, 56px);
+    --header-h: 64px;
+  }
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+  /* maps the logo's blue (#2979ff) to the accent orange (#ff3b00), keeping black and white */
+  .logo-orange { filter: url(#toOrange); }
 
-        gtag('config', 'G-P50P0FE3G0');
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <title>Norts</title>
-    <meta name="description" content="Producer / DJ / Label Founder / Designer / Ad">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&family=Syncopate:wght@400;700&family=Unbounded:wght@200;400;600;800;900&display=swap"
-        rel="stylesheet">
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="style.css">
+  /* the hero stays dark over the video */
+  .hero {
+    --bg: #0a0a0a; --fg: #f2f2ee; --mute: #8a8a85; --line: rgba(242,242,238,.14);
+    color: var(--fg);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--mono); font-size: 14px; line-height: 1.7;
+    overflow-x: hidden; -webkit-font-smoothing: antialiased; font-synthesis: none;
+  }
+  body.locked { overflow: hidden; }
+  ::selection { background: var(--acid); color: var(--on-acid); }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* film grain */
+  body::after {
+    content: ""; position: fixed; inset: -50%; pointer-events: none; z-index: 100;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity: .09; animation: grain 1s steps(6) infinite;
+  }
+  @keyframes grain {
+    0%{transform:translate(0,0)} 20%{transform:translate(-3%,2%)} 40%{transform:translate(2%,-4%)}
+    60%{transform:translate(-4%,-1%)} 80%{transform:translate(3%,3%)} 100%{transform:translate(0,0)}
+  }
+
+  /* ---------- loader ---------- */
+  .loader {
+    position: fixed; inset: 0; z-index: 200; background: var(--bg);
+    display: grid; place-items: center;
+    transition: clip-path 1s cubic-bezier(.77,0,.18,1);
+    clip-path: inset(0 0 0 0);
+  }
+  .loader.done { clip-path: inset(0 0 100% 0); }
+  .loader img { width: min(260px, 56vw); animation: bob 1.2s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-6px) rotate(-2deg); } }
+  .loader-bar { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--acid); width: 0; transition: width .1s linear; }
+
+  /* ---------- header ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--header-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--gutter);
+    background: rgba(236,235,230,.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .logo img { height: 36px; width: auto; }
+  nav { display: flex; gap: clamp(14px, 3vw, 36px); }
+  nav a {
+    font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: .08em;
+    position: relative; overflow: hidden; display: inline-block; height: 1.4em; line-height: 1.4em;
+  }
+  nav a span { display: block; transition: transform .45s cubic-bezier(.7,0,.2,1); }
+  nav a span::after { content: attr(data-t); display: block; color: var(--acid); }
+  nav a:hover span { transform: translateY(-100%); }
+  @media (max-width: 720px) { :root { --header-h: 56px; } nav { gap: 12px; } nav a { font-size: 10px; } header .logo img { height: 28px; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; height: 100svh; min-height: 600px; overflow: hidden; }
+  .hero video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(1) contrast(1.15) brightness(.55);
+    transform: scale(1.08);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, rgba(10,10,10,.2) 0%, rgba(10,10,10,0) 40%, var(--bg) 100%);
+  }
+  .hero-inner {
+    position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter); bottom: clamp(32px, 6vh, 72px);
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: clamp(44px, 10.5vw, 190px); line-height: .88; letter-spacing: -.045em;
+  }
+  .hero h1 .row { display: block; overflow: hidden; }
+  .hero h1 .row > span { display: inline-block; transform: translateY(105%); }
+  .ready .hero h1 .row > span { animation: rise 1.1s cubic-bezier(.2,.9,.1,1) forwards; }
+  .ready .hero h1 .row:nth-child(2) > span { animation-delay: .1s; }
+  .ready .hero h1 .row:nth-child(3) > span { animation-delay: .2s; }
+  @keyframes rise { to { transform: translateY(0); } }
+  .hero h1 .stroke { -webkit-text-stroke: 2px var(--fg); color: transparent; }
+  .hero h1 .dot { color: var(--acid); }
+  .hero-meta {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;
+    margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--mute); letter-spacing: .08em;
+  }
+  .hero-meta b { color: var(--fg); font-weight: 500; }
+  .scroll-cue { display: flex; align-items: center; gap: 10px; }
+  .scroll-cue i { width: 1px; height: 36px; background: var(--line); position: relative; overflow: hidden; }
+  .scroll-cue i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--acid); animation: drip 1.6s infinite; }
+  @keyframes drip { to { top: 100%; } }
+
+  /* ---------- marquee ---------- */
+  .marquee {
+    border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap;
+    background: var(--acid); color: var(--on-acid); transform: rotate(-1.5deg) scale(1.03); margin: 40px 0 0;
+  }
+  .marquee-track { display: inline-flex; animation: slide 26s linear infinite; }
+  .marquee span {
+    font-family: var(--display); font-weight: 900; font-size: clamp(28px, 5vw, 64px);
+    text-transform: uppercase; letter-spacing: -.02em; padding: 10px 0;
+  }
+  .marquee span::after { content: "✶"; margin: 0 .5em; font-weight: 400; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- sections ---------- */
+  section.block { padding: clamp(80px, 14vw, 180px) var(--gutter) 0; }
+  .sec-head {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 18px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--fg); margin-bottom: 40px;
+  }
+  .sec-head .num { font-size: 12px; color: var(--acid); letter-spacing: .1em; }
+  .sec-head h2 {
+    font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: clamp(44px, 9vw, 140px); line-height: .85; letter-spacing: -.04em;
+  }
+  .sec-head .cnt { font-size: 12px; color: var(--mute); }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s, transform 1s cubic-bezier(.2,.9,.1,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* about */
+  .about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 80px); }
+  .portrait { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--panel); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); transition: filter .6s, transform 1.2s cubic-bezier(.2,.9,.1,1); }
+  .portrait:hover img { filter: grayscale(0); transform: scale(1.04); }
+  .about-name {
+    font-family: var(--display); font-weight: 900; font-size: clamp(40px, 6vw, 88px); letter-spacing: -.04em; line-height: 1;
+  }
+  .about-name span { display: block; font-size: .36em; font-weight: 700; letter-spacing: -.01em; color: var(--acid); margin-top: .5em; }
+  .bio { font-family: var(--jp); font-size: clamp(14px, 1.2vw, 16px); line-height: 2.1; max-width: 40em; color: var(--soft); margin-top: 32px; }
+  @media (max-width: 820px) { .about { grid-template-columns: 1fr; } .portrait { max-width: 420px; } }
+
+  /* works list */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; background: none; color: var(--fg);
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em; transition: .25s;
+  }
+  .chip small { font-size: 10px; color: var(--mute); transition: color .25s; }
+  .chip:hover { border-color: var(--fg); }
+  .chip[aria-pressed="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+  .chip[aria-pressed="true"] small { color: var(--acid); }
+  .list { list-style: none; }
+  .list li { border-bottom: 1px solid var(--line); position: relative; }
+  .list li > button {
+    width: 100%; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer;
+    display: grid; grid-template-columns: 92px 96px 1fr 24px; gap: 16px; align-items: center;
+    padding: 20px 0; position: relative; z-index: 1; transition: padding .4s cubic-bezier(.2,.9,.1,1), color .3s;
+  }
+  .list li::before {
+    content: ""; position: absolute; inset: 0; background: var(--acid);
+    transform: scaleY(0); transform-origin: bottom; transition: transform .4s cubic-bezier(.2,.9,.1,1);
+  }
+  .list li:hover::before { transform: scaleY(1); }
+  .list li:hover > button { color: var(--on-acid); padding-left: 16px; }
+  .list .date { font-size: 12px; color: var(--mute); letter-spacing: .04em; }
+  .list li:hover .date, .list li:hover .tag { color: var(--on-acid); border-color: var(--on-acid); }
+  .tag {
+    justify-self: start; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    border: 1px solid var(--line); padding: 2px 8px; color: var(--mute);
+  }
+  .tag.hot { color: var(--acid); border-color: var(--acid); }
+  .list .ttl { font-family: var(--jp); font-weight: 700; font-size: clamp(14px, 1.5vw, 19px); line-height: 1.5; }
+  .list .arr { font-size: 18px; transition: transform .4s; }
+  .list li:hover .arr { transform: rotate(-45deg); }
+  .more { margin-top: 20px; display: none; }
+  .list.collapsed li:nth-child(n+11) { display: none; }
+  .list .empty { padding: 32px 0; color: var(--mute); font-family: var(--jp); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--fg); border-radius: 999px;
+    padding: 12px 22px; font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: .08em;
+    background: none; color: var(--fg); cursor: pointer; transition: .3s;
+  }
+  .btn:hover { background: var(--fg); color: var(--bg); }
+  @media (max-width: 640px) {
+    .list li > button { grid-template-columns: auto 1fr 24px; column-gap: 12px; row-gap: 6px; }
+    .list .date { grid-column: 1; grid-row: 1; }
+    .list .tag { grid-column: 2; grid-row: 1; }
+    .list .ttl { grid-column: 1 / span 2; grid-row: 2; }
+    .list .arr { grid-column: 3; grid-row: 1 / span 2; }
+  }
+
+  /* price */
+  .price-intro {
+    font-family: var(--jp); color: var(--soft); margin-bottom: 24px; max-width: 40em; line-height: 2;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  .price-toggle .plus { display: inline-block; transition: transform .4s; }
+  .price-toggle[aria-expanded="true"] .plus { transform: rotate(45deg); }
+  .price-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s cubic-bezier(.2,.9,.1,1); }
+  .price-wrap.open { grid-template-rows: 1fr; }
+  .price-wrap > div { overflow: hidden; }
+  .price { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 32px; }
+  @media (max-width: 1100px) { .price { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .price { grid-template-columns: 1fr; } }
+  .card { background: var(--bg); padding: 28px 24px 24px; display: flex; flex-direction: column; transition: background .4s; }
+  .card:hover { background: var(--panel); }
+  .card h3 { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -.02em; display: flex; justify-content: space-between; align-items: baseline; }
+  .card h3 small { font-family: var(--mono); font-weight: 400; font-size: 11px; color: var(--acid); }
+  .card dl { margin-top: 20px; flex: 1; }
+  .card dl div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-family: var(--jp); font-size: 13px; }
+  .card dd { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .card .note { margin-top: 16px; font-family: var(--jp); font-size: 11px; color: var(--mute); }
+
+  /* contact */
+  .contact { padding: clamp(100px, 16vw, 220px) var(--gutter) clamp(80px, 12vw, 160px); text-align: center; }
+  .contact .kicker { font-size: 12px; color: var(--acid); letter-spacing: .2em; }
+  .mega {
+    display: block; font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: clamp(48px, 12vw, 220px); line-height: .9; letter-spacing: -.05em; margin: 20px 0 32px;
+    transition: color .3s;
+  }
+  .mega:hover { color: var(--acid); }
+  .mega em { font-style: normal; display: inline-block; transition: transform .5s cubic-bezier(.2,.9,.1,1); }
+  .mega:hover em { transform: translateX(.15em) rotate(-45deg); }
+  .mail { font-size: clamp(14px, 1.6vw, 18px); border-bottom: 1px solid var(--acid); padding-bottom: 2px; }
+  .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 48px; }
+
+  footer {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    padding: 24px var(--gutter); border-top: 1px solid var(--line); font-size: 11px; color: var(--mute); letter-spacing: .08em;
+  }
+  footer .mark { display: flex; align-items: center; gap: 12px; }
+  footer .mark img { height: 28px; width: auto; }
+
+  /* ---------- modal ---------- */
+  dialog.modal {
+    width: min(760px, calc(100% - 32px)); max-height: calc(100svh - 48px); margin: auto;
+    border: 1px solid var(--fg); padding: 0; background: var(--bg); color: var(--fg);
+    overflow: auto; overscroll-behavior: contain;
+  }
+  dialog.modal::backdrop { background: rgba(13,13,13,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  dialog.modal[open] { animation: pop .45s cubic-bezier(.2,.9,.1,1); }
+  @keyframes pop { from { opacity: 0; transform: translateY(24px); } }
+  .modal-bar {
+    position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 20px; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: .1em; color: var(--mute);
+  }
+  .modal-close {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--fg); background: none; color: var(--fg);
+    font-size: 18px; line-height: 1; cursor: pointer; transition: .3s;
+  }
+  .modal-close:hover { background: var(--acid); border-color: var(--acid); color: var(--on-acid); transform: rotate(90deg); }
+  .modal-media { background: #0a0a0a; }
+  .modal-media iframe { display: block; width: 100%; aspect-ratio: 16/9; border: 0; }
+  .modal-media img { width: 100%; max-height: 60svh; object-fit: contain; }
+  .modal-body { padding: 24px 24px 32px; }
+  .modal-body h3 { font-family: var(--jp); font-weight: 700; font-size: clamp(20px, 2.6vw, 28px); line-height: 1.4; margin: 12px 0 20px; }
+  .modal-desc { font-family: var(--jp); font-size: 14px; line-height: 2; white-space: pre-line; color: var(--soft); overflow-wrap: anywhere; }
+  .modal-desc a { color: var(--acid); border-bottom: 1px solid currentColor; }
+  .modal-nav { display: flex; justify-content: space-between; gap: 12px; padding: 0 24px 24px; }
+  .modal-nav .btn { padding: 10px 18px; }
+  .modal-nav .btn:disabled { opacity: .3; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .hero h1 .row > span { transform: none; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
 </head>
-
 <body>
-    <!-- Loading Screen -->
-    <div id="loader">
-        <img src="assets/loading_logo.png" alt="Loading..." class="loader-logo">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="toOrange" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0 0 1 0 0  .9159 0 .0841 0 0  1.1916 0 -.1916 0 0  0 0 0 1 0"/>
+  </filter>
+</svg>
+
+<div class="loader" id="loader"><img class="logo-orange" src="assets/logo-blue.png" alt=""><div class="loader-bar" id="bar"></div></div>
+
+<header>
+  <a class="logo" href="#top" aria-label="Norts"><img class="logo-orange" src="assets/logo-blue.png" alt="Norts"></a>
+  <nav>
+    <a href="#about"><span data-t="ABOUT">ABOUT</span></a>
+    <a href="#works"><span data-t="WORKS">WORKS</span></a>
+    <a href="#price"><span data-t="PRICE">PRICE</span></a>
+    <a href="#contact"><span data-t="CONTACT">CONTACT</span></a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://norts.jp/assets/site.mp4" type="video/mp4">
+    </video>
+    <div class="hero-inner">
+      <h1>
+        <span class="row"><span>No more,</span></span>
+        <span class="row"><span>More</span></span>
+        <span class="row"><span><span class="stroke">Better</span><span class="dot">.</span></span></span>
+      </h1>
+      <div class="hero-meta">
+        <div><b>Norts</b> — Producer / DJ / Label Founder / Designer</div>
+        <div>Based in Tokyo ⇄ Seoul</div>
+        <div class="scroll-cue"><i></i>SCROLL</div>
+      </div>
     </div>
+  </section>
 
-    <div class="cursor"></div>
-    <div class="cursor-follow"></div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Producer</span><span>DJ</span><span>Designer</span><span>Director</span><span>Localize</span>
+      <span>Producer</span><span>DJ</span><span>Designer</span><span>Director</span><span>Localize</span>
+      <span>Producer</span><span>DJ</span><span>Designer</span><span>Director</span><span>Localize</span>
+      <span>Producer</span><span>DJ</span><span>Designer</span><span>Director</span><span>Localize</span>
+    </div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="assets/logo.png" alt="NORTS Logo" style="height: 50px;">
+  <section class="block" id="about">
+    <div class="sec-head reveal"><span class="num">(01)</span><h2>About</h2><span class="cnt">PROFILE</span></div>
+    <div class="about">
+      <figure class="portrait reveal">
+        <img src="assets/profile.jpg" alt="Norts">
+      </figure>
+      <div class="reveal">
+        <div class="about-name">Norts <span>/ Numao Yuto</span></div>
+        <p class="bio">1999年5月1日生まれ。クリエイター / プロデューサー。KUROGO株式会社にて、MVや楽曲制作のディレクター / プロデューサーを務める。楽曲・映像制作といったプレイヤーとしての活動に加え、レーベル「Oshiribeat」の運営を通じた企業タイアップのディレクションなど、制作の全工程をリードする。グローバルな展開にも注力しており、韓国でのイベント主催や翻訳マネージメントなど、語学力を武器に海外現場での実務経験も豊富。制作・運営・言語の3軸で、多角的なプロジェクトをプロデュースしている。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="works">
+    <div class="sec-head reveal"><span class="num">(02)</span><h2>Works</h2><span class="cnt" id="worksCount"></span></div>
+    <div class="filters reveal" id="filters" role="toolbar" aria-label="タグで絞り込み"></div>
+    <ul class="list reveal" id="worksList"></ul>
+    <div class="more" id="worksMore"><button class="btn" type="button">VIEW ALL ↓</button></div>
+  </section>
+
+  <section class="block" id="price">
+    <div class="sec-head reveal"><span class="num">(03)</span><h2>Price</h2><span class="cnt">LIST</span></div>
+    <p class="price-intro reveal">制作や出演、その他業務の価格表です。<br>一例ですので、<wbr>規模や内容に合わせて<wbr>柔軟にご相談に応じます。</p>
+    <button class="btn price-toggle reveal" type="button" aria-expanded="false" aria-controls="priceWrap">PRICE LIST <span class="plus">+</span></button>
+    <div class="price-wrap" id="priceWrap">
+      <div>
+        <div class="price">
+          <div class="card">
+            <h3>Music <small>楽曲制作</small></h3>
+            <dl>
+              <div><dt>同人 新規制作</dt><dd>¥15,000</dd></div>
+              <div><dt>同人 リミックス</dt><dd>¥10,000</dd></div>
+              <div><dt>商業 新規制作</dt><dd>¥50,000〜</dd></div>
+              <div><dt>商業 リミックス</dt><dd>¥40,000〜</dd></div>
+            </dl>
+            <p class="note">※規模や関係性により変動あり。</p>
+          </div>
+          <div class="card">
+            <h3>Visual <small>映像制作</small></h3>
+            <dl>
+              <div><dt>同人 (MG) モーショングラフィックス</dt><dd>¥50,000〜</dd></div>
+              <div><dt>同人 (CG)</dt><dd>¥80,000〜</dd></div>
+            </dl>
+            <p class="note">※現在、商業映像は受け付けておりません。</p>
+          </div>
+          <div class="card">
+            <h3>DJ <small>イベント出演</small></h3>
+            <dl>
+              <div><dt>DJ (〜4h)</dt><dd>¥3,000 + 交通費</dd></div>
+              <div><dt>DJ (4h〜)</dt><dd>¥5,000 + 交通費</dd></div>
+            </dl>
+            <p class="note">※吉祥寺駅起算。規模により変動あり。</p>
+          </div>
+          <div class="card">
+            <h3>Localize <small>翻訳</small></h3>
+            <dl>
+              <div><dt>歌詞日本語ローカライズ<br>(韓国語 → 日本語)</dt><dd>要相談</dd></div>
+              <div><dt>가사 일본어 현지화<br>(한국어 → 일본어)</dt><dd>상담 필요</dd></div>
+            </dl>
+            <p class="note">※内容に応じてお見積りします。</p>
+          </div>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="news.html">NEWS</a></li>
-            <li><a href="works.html">WORKS</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-        <div class="nav-socials">
-            <a href="https://x.com/DJ_Norts" target="_blank" aria-label="X">
-                <!-- X Logo SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-            </a>
-            <a href="https://www.instagram.com/streak_ap/" target="_blank"><ion-icon
-                    name="logo-instagram"></ion-icon></a>
-            <a href="https://www.youtube.com/@norts0501" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a>
-            <a href="https://soundcloud.com/yuto0501" target="_blank"><ion-icon name="logo-soundcloud"></ion-icon></a>
-            <a href="https://open.spotify.com/intl-ja/artist/32MfDyWhES6YsbuEJt0yW6" target="_blank"><ion-icon
-                    name="logo-spotify"></ion-icon></a>
-        </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <!-- 
-                =============================================
-                BACKGROUND VIDEO SETTINGS
-                =============================================
-            -->
-            <div class="hero-background">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="assets/site.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-overlay"></div> <!-- Grid/Texture overlay -->
-            </div>
+  <section class="contact" id="contact">
+    <div class="kicker reveal">( 04 ) — WORK WITH ME</div>
+    <a class="mega reveal" href="mailto:ariayuuto@gmail.com">Let's Talk <em>→</em></a>
+    <a class="mail reveal" href="mailto:ariayuuto@gmail.com">ariayuuto@gmail.com</a>
+    <div class="socials reveal">
+      <a class="btn" href="https://x.com/DJ_Norts" target="_blank" rel="noopener">X ↗</a>
+      <a class="btn" href="https://www.instagram.com/streak_ap/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a class="btn" href="https://www.youtube.com/@norts0501" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a class="btn" href="https://soundcloud.com/yuto0501" target="_blank" rel="noopener">SOUNDCLOUD ↗</a>
+      <a class="btn" href="https://open.spotify.com/intl-ja/artist/32MfDyWhES6YsbuEJt0yW6" target="_blank" rel="noopener">SPOTIFY ↗</a>
+    </div>
+  </section>
+</main>
 
-            <div class="hero-content">
-                <p class="hero-sup">No more,</p>
-                <h1 class="hero-title">More better.</h1>
-            </div>
-        </section>
-    </main>
+<footer>
+  <span class="mark"><img src="assets/logo-white.png" alt="">© Norts</span>
+  <span>NO MORE, MORE BETTER.</span>
+  <a href="#top">BACK TO TOP ↑</a>
+</footer>
 
-    <script src="script.js"></script>
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal-bar"><span id="modalIdx"></span><button class="modal-close" type="button" id="modalClose" aria-label="閉じる">×</button></div>
+  <div class="modal-media" id="modalMedia"></div>
+  <div class="modal-body">
+    <span class="tag" id="modalTag"></span>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+  </div>
+  <div class="modal-nav">
+    <button class="btn" type="button" id="modalPrev">← PREV</button>
+    <button class="btn" type="button" id="modalNext">NEXT →</button>
+  </div>
+</dialog>
+
+<script>
+  const IMG = "https://norts.jp/";
+  // newest first; date is "YYYY-MM-DD", "YYYY-MM" when only the month is known, or "" when unknown
+  const works = [
+    { date: "2026-10-26", tag: "DJ", title: "FAKESEOUL + Bakehour, NECTA @ Room 303 Tokyo", yt: "H-LeOYyLMRU",
+      desc: "Room 303 TokyoのFAKESEOUL+Bakehour, NECTAによる特別セットにDJとして出演しました。\n\n📅 2026.10.26 (Mon) 19:00〜\n📍 Room 303 Tokyo（ストリーミング配信）\n\nハイライト映像をYouTubeで公開中です。" },
+    { date: "2026-10-25", tag: "RELEASE", title: "2026秋M3 — FEAT FRIENDS / Oshiribeat 新譜頒布",
+      desc: "2026秋M3にて新譜を頒布しました。\n\n📅 2026.10.25 (Sun)\n📍 東京流通センター\n\n■ FEAT FRIENDS「FEAT FRIENDS Pack」（第二展示場二階 サ-05a）\n「気づいてよビーーーム！！！」「もっとギュッとしててね」、新曲「我愛你」とリミックスを収録。紙ジャケット・8cm CD・ステッカー付きのセットです。\n\n■ Oshiribeat「Multi Flavor 5」（第一展示場一階 Q-11a）\nNorts - Flow を収録。久々に作った古来のトランスです。" },
+    { date: "2026-10-24", tag: "HOST", title: "S(E)OULMATE — FAKESEOUL Vol.1",
+      desc: "プロデュースを手がけるFAKESEOULの第1回イベント「S(E)OULMATE」を開催しました。メインDJに加え、NECTA、razのバックDJも担当しました。\n\n📅 2026.10.24 (Sat)\n📍 渋谷 宝ビル B1\n🎫 当日券 ¥3,500\n\nARTISTS\nBakehour (KR)\nNECTA w/ Renée (KR)\nraz (KR)\nItoShin (JP)\nBUDDHAHOUSE (JP)\nand more\n\nhttps://norts.jp/fakeseoul/seoulmate" },
+    { date: "2026-10-16", tag: "RELEASE", title: "tripleS - Andless (Norts Remix)", yt: "kOUZBGxnIkI",
+      desc: "tripleS - Andless (Norts Remix) を公開しました。" },
+    { date: "2026-10-07", tag: "MUSIC", title: "FEAT FRIENDS「もっとギュッとしててね」作詞作曲",
+      desc: "FEAT FRIENDS第2弾楽曲「もっとギュッとしててね」の作詞作曲を担当しました。\n\nもっとギュッとしててね - Numao Yuto, Ganba, 覆水\n共同作編曲：Ganba\nVocal：覆水\nIllustration：しろくらげ" },
+    { date: "2026-09-27", tag: "MUSIC", title: "FAKESEOUL「+81 CALLING」作編曲・エンジニアリング",
+      desc: "FAKESEOULの1stシングル「+81 CALLING」の作編曲、エンジニアリングを担当しました。\n\n韓国音楽ライター火気厳禁のラップと、DJ CALYNEのボーカルを収録しています。" },
+    { date: "2026-09-09", tag: "PRODUCE", title: "新レーベル FEAT FRIENDS 始動 /「気づいてよビーーーム！！！」",
+      desc: "Kijibatoと音楽レーベル「FEAT FRIENDS」をローンチしました。作曲サークル時代から親交の深い2人で共同プロデュースを行います。\n\n第一弾リリース\n気づいてよビーーーム！！！\nKijibato × 瀬名航 × ねんね\nJacket Design：Alicemetix\nIllustration：しろくらげ\n\nhttps://lnk.to/FF_NMB" },
+    { date: "2026-08-25", tag: "INFO", title: "クリエイティブユニット FAKESEOUL 始動",
+      desc: "DJのCALYNE、ライターの火気厳禁とクリエイティブユニット「FAKESEOUL」を立ち上げました。NortsはProducerとして楽曲制作を担当し、イベントも開催していきます。\n\nhttps://norts.jp/fakeseoul/" },
+    { date: "2026-07-18", tag: "HOST", title: "OTSUKIMI 2",
+      desc: "K-POP × J-POPが交差する月夜のパーティー「OTSUKIMI 2」をソウルで主催、DJをしました。\n\n📅 2026.07.18 (Sat) 18:00 - 22:00\n📍 Shinchon 1nfinity Club（신촌 인피니티 클럽）\n🎫 当日 ₩20,000 / 早割 ₩15,000\n\nDJ LINE UP\nikumante (JP)\nMURASAKI (KR)\nNorts (JP)\nYu-Tan (JP)\nand more" },
+    { date: "2026-06-28", tag: "RELEASE", title: "IVE (Liz) - Unreal (Norts Remix)",
+      desc: "IVE (Liz) - Unreal (Norts Remix) を公開しました。" },
+    { date: "2026-05-01", tag: "HOST", title: "Norts BirthDay",
+      desc: "誕生日にSWIPE池尻大橋さんでDJイベントを開催していただきました。\n\n📅 2026.05.01 (Fri) 22:00〜\n📍 SWIPE IKEJIRIOHASHI\n🎫 2,000JPY + 1D order\n\nDJs\nItoShin (DJ set)\nNanase\nA-byss\nikumante\nessential_acid\nEitaro Sato (indigo la End)\nNorts\nand..." },
+    { date: "2026-04-29", tag: "RELEASE", title: "tripleS - Girls Never Die / ### (Norts Remix)",
+      desc: "tripleSのリミックスを2曲公開しました。\n\n・tripleS - Girls Never Die (Norts Remix)\n・tripleS - ### (∞! ver) (Norts Remix)\n\nGirls Never Die は100DLに達したため、SoundCloudからのDLは終了しました。必要な方はDMください。" },
+    { date: "2026-04-26", tag: "DESIGN", title: "Domesti-Core 現地回 フライヤー",
+      desc: "国産ハードコアメインイベント「Domesti-Core」現地回のフライヤーを制作しました。\n\n📅 2026.06.20 (Sat) 16:00〜22:00\n📍 渋谷 Another Dimension\n🎫 ¥2,500 (2D付)" },
+    { date: "2026-04-25", tag: "DESIGN", title: "Aris Records ショッパーデザイン",
+      desc: "M3春2026で頒布されたAris Records様のショッパーのデザインを制作しました。" },
+    { date: "2026-04-24", tag: "MUSIC", title: "Dドライブ「TOHO Lethal Weapons」楽曲提供", yt: "5mREt8ejAVw",
+      desc: "Dドライブ様の新譜「TOHO Lethal Weapons」（M3春2026）に Norts - Mind Reading (少女さとり ~3rd eye~) を提供しました。初の東方Remixです。\n\nフル音源をYouTubeで公開中です。音源のご購入も併せてよろしくお願いします。" },
+    { date: "2026-03-05", tag: "RELEASE", title: "Oshiribeat「Multi Flavor 4」配信開始",
+      desc: "Oshiribeatメンバーによる毎年恒例のお楽しみ企画「MULTI FLAVOR 4」が各種サブスクリプションサービスでリリースされました。\n\nNorts - Burn it down を収録しています。" },
+    { date: "2026-02-06", tag: "ARCHIVE", title: "Norts Trap / Techno Mix", yt: "o5nC5dHa95E",
+      desc: "Norts Trap/Techno Mix をYouTubeにアップロードしました。" },
+    { date: "2026-02-02", tag: "ARCHIVE", title: "Norts Hardcore Mix", yt: "D6kbNJnT7BI",
+      desc: "Norts Hardcore Mix をYouTubeにアップロードしました。" },
+    { date: "2026-01-30", tag: "ARCHIVE", title: "Norts UK Garage Mix", yt: "Q7L56mCPXj8",
+      desc: "Norts UK Garage Mix をYouTubeにアップロードしました。" },
+    { date: "2026-01-27", tag: "DESIGN", title: "I am loving it! Vol.5 フライヤー",
+      desc: "I am loving it! Vol.5 のフライヤーデザインを担当しました。\n\n📅 2026.02.27 (Fri) 23:30〜05:00\n📍 渋谷 Another Dimension\n🎫 DOOR ¥2,500 (with 2D)" },
+    { date: "2026-01-27", tag: "DESIGN", title: "Cloudscope Vol.5 フライヤー",
+      desc: "サンクラ産アニリミイベント「Cloudscope Vol.5」のフライヤーを担当しました。\n\n📅 2026.02.07 (Sat) 14:00〜\n📍 早稲田 茶箱\n🎫 ¥2,500 + 1D" },
+    { date: "2026-01-17", tag: "RELEASE", title: "Plastic Fruits - フラグメント (Norts Remix) 配信開始",
+      desc: "Plastic Fruits - フラグメント (Norts Remix) が各種ストリーミングサービスでリリースされました。" },
+    { date: "2026-01-13", tag: "RELEASE", title: "H1-KEY - 여름이였다 (Norts KCORE Remix)",
+      desc: "H1-KEY - 여름이였다 (Summer was you) Norts KCORE Remix を公開しました。" },
+    { date: "2025-11-04", tag: "INFO", title: "Oshiribeat 新メンバー加入",
+      desc: "OshiribeatにComposerとしてRaimukunが加入しました。\n\n新メンバーを迎えたOshiribeatをこれからもよろしくお願いいたします。" },
+    { date: "2025-10-26", tag: "RELEASE", title: "2025秋M3 — Artifact / Multi Flavor 4 参加",
+      desc: "2025秋M3にて、2作品に楽曲で参加しました。\n\n📅 2025.10.26 (Sun)\n\n■ Plastic Fruits 1stフルボーカルアルバム『Artifact』\nフラグメント (Norts Remix)\n\n■ Oshiribeat「Multi Flavor 4」\nNorts - Burn it down（メロダブ）" },
+    { date: "2025-10-18", tag: "LOCALIZE", title: "litmus* ft. Rumency - Find U 日本語歌詞",
+      desc: "litmus* ft. Rumency「Find U」の日本語歌詞を手伝いました。\n일본어 가사를 도와줬어요！" },
+    { date: "2025-10-11", tag: "HOST", title: "OTSUKIMI",
+      desc: "ソウルでKPOPイベント OTSUKIMI を主催、DJをしました。\n\n🗓10.11(토)16:00~21:00\n📍Sinchon 1nfinity Club\n🎫₩20,000" },
+    { date: "2025-09-16", tag: "DESIGN", title: "リミ大戦!! Vol.5 フライヤーデザイン", img: "assets/WORKS/G09orDRaoAAQuYg.jpeg",
+      desc: "「リミ大戦!! Vol.5」のフライヤーデザインを担当しました。\n\nGUEST DJ\nbrz1128(@brz1128)\nLU-I(@LU_I0900)\nm4titann(@m4titann)\npocotan(@pocotan85)\n\n⏰ 10/11(土) 14:00～\n🗺 秋葉原MOGRA\n💵 ¥2,500＋1D\n🔗 https://twvt.me/rimi_taisen_5" },
+    { date: "2025-09-05", tag: "DESIGN", title: "I am loving it! Vol.4 フライヤー",
+      desc: "I am loving it! の1周年回となるVol.4のフライヤーデザインを担当しました。ドナルドのスタンド図から提案させていただき、デザインに落とし込みました。\n\n📅 2025.10.03 (Fri) 23:30〜05:00\n📍 渋谷 Another Dimension\n🎫 DOOR ¥2,500 (with 2D)" },
+    { date: "2025-08-10", tag: "HOST", title: "OSR in Seoul", yt: "WprN4brH-2I",
+      desc: "Oshiribeat初の海外公演「OSR in Seoul」を主催、DJをしました。NortsのDJアーカイブをYouTubeにアップロードしています。\n\n📅 2025.08.10 (Sun) 17:00〜22:00\n📍 Sinchon 1nfinity Club\n\nGUEST\nTAK\nSANY-ON\nNeLiME" },
+    { date: "2025-05-29", tag: "ARCHIVE", title: "MUSEMOLT : Field Trip 01 Norts DJ Archive // Nanako heavysick zero", yt: "N_MZfe8rRsU",
+      desc: "MUSEMOLT : Field Trip 01 Norts DJ Archive // Nanako heavysick zeroのアーカイブをアップロードしました。" },
+    { date: "2025-05-23", tag: "TALK", title: "【鍵ラジ研#8】たくさん宅録同好会の昔話をする日", yt: "iaOZyb017jE",
+      desc: "【鍵ラジ研#8】たくさん宅録同好会の昔話をする日【ゲスト・Norts】に出演しました。" },
+    { date: "2025-05-04", tag: "DJ", title: "MUSE MOLT : Field Trip 01",
+      desc: "MUSE MOLT : Field Trip 01に出演しました。\n\n📅 2025. 5. 4. (Sun) / 13:00 ~ 20:30\n📍 中野 heavysick ZERO, 東京\n🎫 DOOR 3,000円 (1D別)\n\nwith\n🎧 23AM ETERNAL 🇯🇵\n🎧 TEKNICIAN 🇯🇵\n🎧 げんちょうけん 🇰🇷" },
+    { date: "2025-02-28", tag: "DJ", title: "RINGTONE vol.6",
+      desc: "RINGTONE vol.6 出演しました。\n\n📅2025.02.28(金) 23:00~\n🎫¥1,500/1D\n📍池尻大橋Swipe" },
+    { date: "2025-02-22", tag: "DJ", title: "NEMONEMO Vol.2",
+      desc: "NEMONEMO Vol.2に出演しました。\n\n📅2025.02.22(土) 23:00~\n🎫¥1,000/1D\n📍渋谷Ruby Room" },
+    { date: "2025-02-14", tag: "DJ", title: "I am loving it! vol.2",
+      desc: "I am loving it! vol.2に、あゆふわ松とのB2Bで出演しました。\nフライヤーデザインも担当しました。\n\n2025/02/14(金) 23:30~5:00\n@渋谷 Another Dimension\nDOOR: ¥2500(with 2 Drinks!)" },
+    { date: "2025-02-02", tag: "ARCHIVE", title: "Norts K-UKG DJ // 自宅", yt: "i9d7aMAAOXA",
+      desc: "Norts K-UKG DJ // 自宅をアップロードしました。" },
+    { date: "2025-01-17", tag: "TALK", title: "KPOP(みんなの)ベストテン 2024",
+      desc: "KPOP(みんなの)ベストテン 2024にパネリストとして出演しました。\n\n📅 2025.01.17 (Fri)\n📍調布Cross\n⏱19:00~23:00\n🎫Entrance Free" },
+    { date: "2025-01", tag: "LOCALIZE", title: "7OAST - 噂 日本語歌詞ローカライズ", img: "assets/WORKS/hq720.jpg",
+      desc: "韓国のアーティスト 7OASTさんの新曲\n\n7OAST - 噂\n\n日本語歌詞の監修を担当しました。" },
+    { date: "", tag: "DESIGN", title: "SSSO — The Secret Sauce Vol.4 アートワーク", img: "assets/WORKS/a2193628359_2.jpg",
+      desc: "SSSOの新アルバム、The Secret Sauce Vol.4のアートワークを担当しました。" },
+    { date: "2024-12-26", tag: "DJ", title: "NEMONEMO",
+      desc: "NEMONEMOに出演しました。\n\n2024/12/26(木) 19:00\n@調布cross\n\nDJ中村一葉名義での出演です。" },
+    { date: "2024-10", tag: "DESIGN", title: "NEW PARTY「I am loving it」フライヤー / タイムテーブル制作", img: "assets/WORKS/GYfXnwQbwAEG0Aa.jpeg",
+      desc: "バイブさんとあゆふわくん主催のNEW PARTY\n\nI am loving it のフライヤー制作とタイムテーブル制作を担当しました。" },
+    { date: "2024-08-27", tag: "LOCALIZE", title: "TAK - mochimochi 日本語歌詞監修", yt: "tQM8pfwmcU0",
+      desc: "TAK - mochimochi feat. 初音ミク\n\n日本語歌詞の監修を担当しました。" },
+    { date: "2024-08-16", tag: "ARCHIVE", title: "Norts Vlog │ in Seoul 2024", yt: "MdrTeI_iBYA",
+      desc: "Norts Vlog│in Seoul 2024をアップロードしました。" },
+    { date: "2024-08-14", tag: "ARCHIVE", title: "MUSEMOLT01 Norts DJ Archive // Sinchon Infinity Club", yt: "OBoFoGL-AKs",
+      desc: "MUSEMOLT01に出演した時のアーカイブをYouTubeにアップロードしました。" },
+    { date: "2024-08-14", tag: "ARCHIVE", title: "H.ai Norts DJ Archive // 을지로3가 H.ai 에서 사랑을...", yt: "svFSRXeFDCk",
+      desc: "韓国,ソウルの乙支路3街にあるコミュニティ「H.ai」のDJ放送に出演した時のMIXをYouTubeにアップロードしました。\n\nH.aiコミュニティの皆様、ありがとうございました！H.ai여러분 감사드립니다!!" },
+    { date: "2024-08-10", tag: "DJ", title: "MUSE MOLT 01", img: "assets/NEWS/GR233TFacAUAtTB.jpeg",
+      desc: "ソウルで行われたMUSE MOLT 01に出演しました。\n\n🎫MUSE MOLT 01\n📍인피니티클럽\n📅8/10 14:30~22:30" },
+    { date: "2024-07-20", tag: "DJ", title: "誕生日おめすめてぃっくす！", img: "assets/NEWS/67863110575658.jpg",
+      desc: "誕生日おめすめてぃっくす！\nEmoCosineとB2Bで主演しました。\n\n日時：2024年7月20日(土) 14:00~20:00\n場所：新宿EDEN\n\n🎉｜主役\nAlicemetix\n\n🎂｜DJ\nmomone & curren\nNorts B2B EmoCosine\nnaePi-YO B2B RuuChan\nTom-i\nいろな VS Sana Logic\n千円札ぅ" },
+    { date: "2024-07-13", tag: "DJ", title: "#arcade_7th", img: "assets/NEWS/GRpOVNNaUAEpISG.jpeg",
+      desc: "#arcade_7thに出演しました。\n\n2024.7.13(土)\n<ARCADE GAME × DJ>\n『 #arcade_7th 』\nat 渋谷 @A_Dimension_\n\nOPEN:23:00\nCLOSE:5:00\nDOOR: ￥2000(2D込)\n\nDJ\nhallycore @hallycore_\nYazavva @yazavva_\ntellur @te1111ur\nAYFW @_ayfw\nNorts @DJ_Norts\nM0BCa5 @WTF_M0B\nShoN\n\npresented by ShoN-shumai_i" },
+    { date: "2024-04-13", tag: "DJ", title: "陰陽 -INYAN-", img: "assets/NEWS/GIi67sDbwAAqeUZ.jpeg",
+      desc: "陰陽 -INYAN- 出演しました。\n\n2024.4.13(SAT) OPEN13:00～\n陰陽 -INYAN- #陰陽_CREAM\nat CREAM\nDOOR : 3000円+1D" },
+    { date: "2024-02-22", tag: "DJ", title: "#ナードオフ", img: "assets/NEWS/GFffNYfb0AAFNH-.jpeg",
+      desc: "#ナードオフ 出演しました。\n\n2024/02/22(木) 19:00-23:30\n高円寺 yakusyu\nDoor ¥1000 + 1drink" },
+  ];
+  const TAG_ORDER = ["DJ", "HOST", "MUSIC", "PRODUCE", "RELEASE", "DESIGN", "LOCALIZE", "ARCHIVE", "TALK", "INFO"];
+
+  const pad = n => String(n).padStart(2, "0");
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const linkify = s => esc(s).replace(/https?:\/\/[^\s<]+/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+  const fmtDate = d => d ? d.replace(/-/g, ".") : "—";
+  const $ = id => document.getElementById(id);
+
+  // list + filters
+  const listEl = $("worksList"), moreEl = $("worksMore"), filtersEl = $("filters");
+  let filter = "ALL", view = works;
+  const counts = works.reduce((m, it) => (m[it.tag] = (m[it.tag] || 0) + 1, m), {});
+  const tags = ["ALL", ...TAG_ORDER.filter(t => counts[t])];
+  filtersEl.innerHTML = tags.map(t =>
+    `<button type="button" class="chip" data-tag="${t}" aria-pressed="${t === "ALL"}">${t}<small>${t === "ALL" ? works.length : counts[t]}</small></button>`
+  ).join("");
+  const renderList = () => {
+    view = filter === "ALL" ? works : works.filter(it => it.tag === filter);
+    listEl.innerHTML = view.map((it, i) =>
+      `<li><button type="button" data-i="${i}"><span class="date">${fmtDate(it.date)}</span><span class="tag${it.tag === "HOST" ? " hot" : ""}">${it.tag}</span><span class="ttl">${esc(it.title)}</span><span class="arr">→</span></button></li>`
+    ).join("");
+    $("worksCount").textContent = `${pad(view.length)} ENTRIES`;
+    const long = view.length > 10;
+    listEl.classList.toggle("collapsed", long);
+    moreEl.style.display = long ? "block" : "none";
+  };
+  filtersEl.addEventListener("click", e => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    filter = b.dataset.tag;
+    filtersEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+    renderList();
+  });
+  moreEl.querySelector("button").onclick = () => { listEl.classList.remove("collapsed"); moreEl.style.display = "none"; };
+  renderList();
+
+  // modal (walks through the current filtered view)
+  const modal = $("modal");
+  let cur = 0;
+  const show = i => {
+    const it = view[i];
+    cur = i;
+    $("modalMedia").innerHTML = it.yt
+      ? `<iframe src="https://www.youtube-nocookie.com/embed/${it.yt}" title="${esc(it.title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
+      : it.img ? `<img src="${IMG + encodeURI(it.img)}" alt="" onerror="this.remove()">` : "";
+    $("modalIdx").textContent = `${filter} ${pad(i + 1)} / ${pad(view.length)} — ${fmtDate(it.date)}`;
+    $("modalTag").textContent = it.tag;
+    $("modalTag").className = "tag" + (it.tag === "HOST" ? " hot" : "");
+    $("modalTitle").textContent = it.title;
+    $("modalDesc").innerHTML = linkify(it.desc);
+    $("modalPrev").disabled = i === 0;
+    $("modalNext").disabled = i === view.length - 1;
+    modal.scrollTop = 0;
+  };
+  const open = i => { show(i); if (!modal.open) { modal.showModal(); document.body.classList.add("locked"); } };
+  const close = () => modal.close();
+  modal.addEventListener("close", () => { $("modalMedia").innerHTML = ""; document.body.classList.remove("locked"); });
+  modal.addEventListener("click", e => { if (e.target === modal) close(); });
+  $("modalClose").onclick = close;
+  $("modalPrev").onclick = () => show(cur - 1);
+  $("modalNext").onclick = () => show(cur + 1);
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest("button[data-i]");
+    if (b) open(+b.dataset.i);
+  });
+
+  // price toggle
+  const priceBtn = document.querySelector(".price-toggle"), priceWrap = $("priceWrap");
+  priceBtn.onclick = () => {
+    const on = priceWrap.classList.toggle("open");
+    priceBtn.setAttribute("aria-expanded", on);
+  };
+
+  // loader
+  const bar = $("bar");
+  let p = 0;
+  const tick = setInterval(() => {
+    p = Math.min(100, p + Math.ceil(Math.random() * 9));
+    bar.style.width = p + "%";
+    if (p >= 100) {
+      clearInterval(tick);
+      setTimeout(() => { $("loader").classList.add("done"); document.body.classList.add("ready"); }, 200);
+    }
+  }, 40);
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // hero parallax
+  const vid = document.querySelector(".hero video");
+  addEventListener("scroll", () => { const s = scrollY; if (s < innerHeight) vid.style.transform = `scale(1.08) translateY(${s * .25}px)`; }, { passive: true });
+</script>
 </body>
-
 </html>
