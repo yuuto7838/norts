@@ -10,6 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Roboto+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  /* only the Bold cut ships, so it covers every heavy weight used below */
+  @font-face {
+    font-family: "Grifter";
+    src: url("assets/GRIFTERBold.woff2") format("woff2");
+    font-weight: 700 900;
+    font-style: normal;
+    font-display: swap;
+  }
   :root {
     --bg: #ecebe6;
     --fg: #0d0d0d;
@@ -20,7 +28,7 @@
     --ghost: rgba(13,13,13,.16);
     --acid: #ff3b00;
     --on-acid: #fff;
-    --display: "Unbounded", sans-serif;
+    --display: "Grifter", "Unbounded", sans-serif;
     --mono: "Roboto Mono", monospace;
     --jp: "Noto Sans JP", sans-serif;
     --gutter: clamp(16px, 4vw, 56px);
