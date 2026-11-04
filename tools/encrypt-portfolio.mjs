@@ -90,7 +90,9 @@ if (!password) {
   const again = await askHidden("もう一度入力: ");
   if (password !== again) { console.error("パスワードが一致しません。"); process.exit(1); }
 }
-if (password.length < 8) { console.error("パスワードは8文字以上にしてください。"); process.exit(1); }
+if (!password) { console.error("パスワードが空です。"); process.exit(1); }
+// short passwords are allowed (owner's call) but the page can be brute-forced offline
+if (password.length < 10) console.warn("注意: 短いパスワードは総当たりで解読されやすくなります（10文字以上・英数字混在がおすすめ）。");
 
 const { html, count } = await inlineMedia(await readFile(SRC, "utf8"));
 const salt = crypto.getRandomValues(new Uint8Array(16));
