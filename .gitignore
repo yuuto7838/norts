@@ -1,2 +1,4 @@
 .claude/
 norts-site.zip
+# private portfolio source: only the encrypted build in portfolio/ is published
+portfolio-src/
